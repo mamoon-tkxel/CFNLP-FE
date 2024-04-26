@@ -3,10 +3,14 @@ import { LeftMenu } from "@/components/LeftMenu";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-      <LeftMenu />
-      <div>
+    <div className="wrapper">
+      <div className="header">
         <Header />
+      </div>
+      <div className="dashboard">
+        <div className="sidebar">
+          <LeftMenu />
+        </div>
         <div> {children}</div>
       </div>
     </div>
