@@ -4,12 +4,12 @@ const SideBar = [
   {
     icon: "icon",
     label: "Dashboard",
-    link: "/",
+    link: "/admin",
   },
   {
     icon: "icon",
     label: "Grants",
-    link: "grant",
+    link: "grants",
   },
   {
     icon: "icon",
