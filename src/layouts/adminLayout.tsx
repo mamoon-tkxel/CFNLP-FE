@@ -1,6 +1,8 @@
 import { Header } from "@/components/Header";
 import { LeftMenu } from "@/components/LeftMenu";
 
+import "./style.css";
+
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="wrapper">

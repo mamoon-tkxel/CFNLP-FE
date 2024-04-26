@@ -38,7 +38,9 @@ export const LeftMenu = () => {
   return (
     <div>
       {SideBar.map(({ label, link }) => (
-        <Link to={link}>{label}</Link>
+        <li>
+          <Link to={link}>{label}</Link>
+        </li>
       ))}
     </div>
   );

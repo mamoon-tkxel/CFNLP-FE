@@ -1,0 +1,8 @@
+.dashboard {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar {
+  width: 15%;
+}
