@@ -1,12 +1,21 @@
-import { BrowserRouter } from "react-router-dom";
+import { Fragment } from "react/jsx-runtime";
 import AppRoutes from "./routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
+    <Fragment>
       <AppRoutes />
-    </BrowserRouter>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        draggable={false}
+      />
+    </Fragment>
   );
-}
+};
 
 export default App;
