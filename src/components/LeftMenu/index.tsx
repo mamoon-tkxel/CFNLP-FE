@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const SideBar = [
+const SIDEBAR = [
   {
     icon: "icon",
     label: "Dashboard",
@@ -37,7 +37,7 @@ const SideBar = [
 export const LeftMenu = () => {
   return (
     <div>
-      {SideBar.map(({ label, link }) => (
+      {SIDEBAR.map(({ label, link }) => (
         <li>
           <Link to={link}>{label}</Link>
         </li>
