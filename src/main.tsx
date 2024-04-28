@@ -1,3 +1,8 @@
+Promise.all([import("@/Root"), import("@/App")]).then(
+  ([{ default: render }, { default: App }]) => {
+    render(App);
+  }
+);
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
