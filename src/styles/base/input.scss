@@ -1,0 +1,36 @@
+@import '../functions/_mixinsModule.scss';
+
+input[type='date'] ::-webkit-inner-spin-button,
+input[type='date'] ::-webkit-calendar-picker-indicator {
+  visibility: none;
+  -webkit-appearance: none;
+}
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input,
+textarea {
+  @include animate-op;
+}
+input[type='search']::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type='search']::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}

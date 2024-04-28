@@ -1,0 +1,15 @@
+@import '../base/_typography.scss';
+@import '../variables/_colors.scss';
+@import '../base/fonts';
+
+@mixin animate-op {
+  animation: animateOp 0.3s ease-in;
+  @keyframes animateOp {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
