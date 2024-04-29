@@ -9,6 +9,7 @@ export const Header = () => {
   flexDirection='row'
   sx={{
     minHeight:'64px',
+    maxHeight:"64px",
     padding:"12px 32px",
     borderBottom:"1px solid #DFE2E8",
     backgroundColor:"#ffffff"

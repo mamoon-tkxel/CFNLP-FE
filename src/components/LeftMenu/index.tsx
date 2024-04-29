@@ -51,7 +51,18 @@ export const LeftMenu = () => {
        <List sx={{padding:"0"}}>
        {SIDEBAR.map(( item,index ) => (
         <Link to={item.link} onClick={()=>{setActive(index)}} className={active === index ? 'active' : ''}style={{textDecoration:"none"}} >
-          <ListItem disablePadding sx={{backgroundColor:active===index?"#0C1A75":"#ffffff",color:active===index?"#ffffff":"#5F6269" }}>
+          <ListItem sx={{
+          backgroundColor:active===index?"#0C1A75":"#ffffff",
+          color:active===index?"#ffffff":"#5F6269" ,
+          "svg":{
+
+        'path':{
+
+            fill:active===index?"#ffffff":"#5F6269"
+    }
+  }
+
+}}>
             <ListItemButton>
               <ListItemIcon sx={{minWidth:"32px" }}>
                 {item.icon}

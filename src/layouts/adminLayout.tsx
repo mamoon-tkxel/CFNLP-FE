@@ -6,7 +6,7 @@ import { Box, Stack } from "@mui/material";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Stack className="wrapper" style={{backgroundColor:"#ECECEC"}}>
+    <Stack className="wrapper" style={{backgroundColor:"#F0F2F6"}}>
         <Header />
       <Stack
       flexDirection="row"
