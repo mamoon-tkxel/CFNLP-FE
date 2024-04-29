@@ -1,15 +1,12 @@
 import { TextField, TextFieldProps, Stack, Typography } from "@mui/material";
-type TextFieldComponentProps=TextFieldProps & {
-  background?:string,
-  title?:string,
-}
-export const TextFieldComponent = ({background,title,...arg}:TextFieldComponentProps) => {
+type InputField = TextFieldProps & {
+  label?: string;
+};
+export const InputField = ({ label, ...arg }: InputField) => {
   return (
-    <Stack
-    gap={1}
-    >
-   {title && <Typography>{title}</Typography>}
-    <TextField  {...arg} sx={{backgroundColor:{background}}}/>
+    <Stack gap={1}>
+      {label && <Typography>{label}</Typography>}
+      <TextField {...arg} />
     </Stack>
   );
 };

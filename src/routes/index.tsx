@@ -8,7 +8,6 @@ const AppRoutes = () => {
       <Route path="/sign-in" element={<AdminSignIn />} />
       <Route path="/admin/*" element={<AdminRoutes />} />
       <Route path="/" element={<Navigate to="/sign-in" />} />
-
     </Routes>
   );
 };
