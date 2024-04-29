@@ -7,6 +7,11 @@ import { store, persister } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
 
 import "./index.css";
+import "./styles/base/normalize.scss";
+import "./styles/base/_fonts.scss";
+import "./styles/base/_typography.scss";
+// import './styles/base/globalStyles.scss'
+import "./styles/base/input.scss";
 
 const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);
