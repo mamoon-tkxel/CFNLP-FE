@@ -1,3 +1,5 @@
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from "@mui/material";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SIDEBAR = [
@@ -35,13 +37,30 @@ const SIDEBAR = [
 ];
 
 export const LeftMenu = () => {
+  const [active,setActive]=useState(0);
   return (
-    <div>
-      {SIDEBAR.map(({ label, link }) => (
-        <li>
-          <Link to={link}>{label}</Link>
-        </li>
-      ))}
-    </div>
+    <Stack
+    sx={{
+      minHeight:"calc(100vh - 64px)",
+      maxWidth:"230px",
+      minWidth:"230px",
+      backgroundColor:"#ffffff"
+    }}
+    >
+       <List sx={{padding:"0"}}>
+       {SIDEBAR.map(( item,index ) => (
+        <Link to={item.link} onClick={()=>{setActive(index)}} className={active === index ? 'active' : ''}style={{textDecoration:"none"}} >
+          <ListItem disablePadding sx={{backgroundColor:active===index?"#0C1A75":"#ffffff",color:active===index?"#ffffff":"#5F6269" }}>
+            <ListItemButton>
+              <ListItemIcon>
+                {}
+              </ListItemIcon>
+              <ListItemText primary={item.label} />
+            </ListItemButton>
+          </ListItem>
+          </Link>
+        ))}
+      </List>
+    </Stack>
   );
 };
