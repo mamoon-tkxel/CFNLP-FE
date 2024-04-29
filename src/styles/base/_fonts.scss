@@ -1,0 +1,53 @@
+// @font-face {
+//   font-family: 'OpenSans Regular';
+//   src:
+//     url('./font-files/OpenSans-Regular.woff') format('woff'),
+//     url('./font-files/OpenSans-Regular.woff2') format('woff2'),
+//     url('./font-files/OpenSans-VariableFont_wdth\,wght.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+// @font-face {
+//   font-family: 'OpenSans Italic';
+//   src:
+//     url('./font-files/OpenSans-Italic.woff') format('woff'),
+//     url('./font-files/OpenSans-Italic.woff2') format('woff2'),
+//     url('./font-files/OpenSans-Italic-VariableFont_wdth\,wght.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// $fonts_family: (
+//   'opensans_regular': 'OpenSans Regular',
+//   'opensans_italic': 'OpenSans Italic',
+// );
+// @function font_fam($font_fam) {
+//   @return map-get($fonts_family, $font_fam);
+// }
+// .inter_regular {
+//   font-family: 'Inter', sans-serif !important;
+// }
+// .inter_medium {
+//   font-family: 'Inter Medium' !important;
+// }
+// .inter_semibold {
+//   font-family: 'Inter SemiBold' !important;
+// }
+// .poppins_semibold {
+//   font-family: 'Poppins Semibold' !important;
+// }
+// .poppins_bold {
+//   font-family: 'Poppins Bold' !important;
+// }
+// @each $fonts, $font_val in $fonts_family {
+//   .font-#{$fonts} {
+//     font-family: $font_val !important;
+//   }
+//   @media (max-width: 767.98px) {
+//     .font-sm-#{$fonts} {
+//       font-family: $font_val !important;
+//     }
+//   }
+// }
