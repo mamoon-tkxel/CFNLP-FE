@@ -2,7 +2,7 @@ import { Formik, FormikHelpers, Form } from "formik";
 
 import { ButtonComponent } from "@/components/Button";
 import { CheckboxComponent } from "@/components/Checkbox/CheckboxComponent";
-import { InputField } from "@/components/inputField";
+import { InputFields } from "@/components/inputField";
 import { Logo } from "@/components/logo";
 import { Stack, Typography } from "@mui/material";
 import { SIGN_IN_VALUES } from "@/constants/types/forms";
@@ -69,7 +69,7 @@ const AdminSignIn = () => {
                   </Stack>
                 </Stack>
                 <Stack gap="16px">
-                  <InputField
+                  <InputFields
                     name="email"
                     value={values.email}
                     onChange={handleChange}
@@ -80,7 +80,7 @@ const AdminSignIn = () => {
 
                   {errors.email && touched.email && errors.email}
 
-                  <InputField
+                  <InputFields
                     name="password"
                     value={values.password}
                     onChange={handleChange}
