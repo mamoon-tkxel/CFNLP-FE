@@ -1,36 +1,37 @@
+import { applicationIcon, countyIcon, dashboardIcon, grantIcon, reportIcon, usersIcon } from "@/assets/svgs";
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SIDEBAR = [
   {
-    icon: "icon",
+    icon: dashboardIcon,
     label: "Dashboard",
     link: "/admin",
   },
   {
-    icon: "icon",
+    icon: grantIcon,
     label: "Grants",
     link: "grants",
   },
   {
-    icon: "icon",
+    icon: applicationIcon,
     label: "Applications",
     link: "/",
   },
 
   {
-    icon: "icon",
+    icon: reportIcon,
     label: "Reports",
     link: "/",
   },
   {
-    icon: "icon",
+    icon: countyIcon,
     label: "County Profiles",
     link: "/",
   },
   {
-    icon: "icon",
+    icon: usersIcon,
     label: "Users",
     link: "/",
   },
@@ -52,8 +53,8 @@ export const LeftMenu = () => {
         <Link to={item.link} onClick={()=>{setActive(index)}} className={active === index ? 'active' : ''}style={{textDecoration:"none"}} >
           <ListItem disablePadding sx={{backgroundColor:active===index?"#0C1A75":"#ffffff",color:active===index?"#ffffff":"#5F6269" }}>
             <ListItemButton>
-              <ListItemIcon>
-                {}
+              <ListItemIcon sx={{minWidth:"32px" }}>
+                {item.icon}
               </ListItemIcon>
               <ListItemText primary={item.label} />
             </ListItemButton>

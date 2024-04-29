@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AdminSignIn from "@/views/admin/signIn";
 import AdminRoutes from "./adminRoutes";
 import  {TestComponent}  from "../components/TestComponent";

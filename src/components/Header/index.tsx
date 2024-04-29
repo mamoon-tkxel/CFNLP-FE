@@ -42,7 +42,8 @@ export const Header = () => {
       variant="extended"
       sx={{
         height:"40px",
-        backgroundColor:"#F0F2F6"
+        backgroundColor:"#F0F2F6",
+        gap:"8px"
       }}
       >
       <span className="height-24 width-24 b-radius-12 bg-clr-pink-100 clr-white">O</span>
