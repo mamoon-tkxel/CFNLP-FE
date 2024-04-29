@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AdminSignIn from "@/views/admin/signIn";
 import AdminRoutes from "./adminRoutes";
 
@@ -7,7 +7,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/sign-in" element={<AdminSignIn />} />
       <Route path="/admin/*" element={<AdminRoutes />} />
-      <Route path="/" element={<>check</>} />
+      <Route path="/" element={<Navigate to="/sign-in" />} />
     </Routes>
   );
 };
