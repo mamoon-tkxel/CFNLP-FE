@@ -3,16 +3,23 @@ import { Formik, FormikHelpers, Form } from "formik";
 import { InputField } from "@/components/InputFields";
 import { SwitchButton } from "@/components/SwitchButton";
 import { SelectField } from "@/components/SelectField";
-import { TextArea } from "@/components/TextAreaField";
 import { ButtonComponent } from "@/components/Button";
 import { ADMIN_CREATE_GRANT_VALUES } from "@/constants/types/forms";
 import { createGrantValidationSchema } from "@/helpers/validations/AdminForms";
 import { Divider, Stack, Typography } from "@mui/material";
 import { crossIcon } from "@/assets/svgs";
+import { getCurrentDate } from "@/helpers/utils";
 
 interface CREATE_GRANT_TYPES {
   initialValues: ADMIN_CREATE_GRANT_VALUES;
 }
+
+const TYPE_OPTIONS = [
+  {
+    label: "TYPE",
+    value: "type",
+  },
+];
 
 const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
   const handleSubmit = (
@@ -71,7 +78,13 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   }}
                 />
 
-                <SelectField label="Grant Type" />
+                <SelectField
+                  label="Grant Type"
+                  options={TYPE_OPTIONS}
+                  value={values.type}
+                  name="type"
+                  onChange={handleChange}
+                />
                 {errors.type && touched.type && errors.type}
 
                 <InputField
@@ -79,7 +92,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   value={values.amount}
                   onChange={handleChange}
                   label="Grant Amount per charter"
-                  type="text"
+                  type="number"
                   sx={{
                     backgroundColor: "#F8F9FA",
                     borderRadius: "8px",
@@ -99,18 +112,30 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                     border: "1px solid #DFE2E8",
                     boxShadow: "0px 1px 2px 0px #1018280D",
                   }}
+                  inputProps={{
+                    min: getCurrentDate(),
+                  }}
                 />
                 <>
                   {errors.deadlineDate &&
                     touched.deadlineDate &&
                     errors?.deadlineDate}
                 </>
+
                 <SwitchButton
+                  name="sendInvitation"
+                  onChange={handleChange}
+                  defaultChecked={!!values.sendInvitation}
                   label={"Send Grant Invitation to Counties"}
                   sx={{ width: "36px", height: "20px", borderRadius: "12px" }}
                 />
 
-                <SwitchButton label={"Active"} defaultChecked={true} />
+                <SwitchButton
+                  label={values.status ? "Active" : "InActive"}
+                  defaultChecked={!!values.status}
+                  name="status"
+                  onChange={handleChange}
+                />
 
                 <ButtonComponent
                   text="save"

@@ -7,7 +7,7 @@ type SWITCH_BUTTON = SwitchProps & {
   defaultChecked?: boolean;
   label?: string;
 };
-const CustomSwitch = styled(Switch)(({ theme }) => ({
+const CustomSwitch = styled(Switch)(() => ({
   width: 36, // Fixed width from properties
   height: 20, // Fixed height from properties
   padding: 2, // Padding from properties
@@ -31,11 +31,22 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
     opacity: 1, // No transparency
   },
 }));
-export const SwitchButton = ({ defaultChecked, label }: SWITCH_BUTTON) => {
+export const SwitchButton = ({
+  name,
+  onChange,
+  defaultChecked,
+  label,
+}: SWITCH_BUTTON) => {
   return (
     <FormGroup>
       <FormControlLabel
-        control={<CustomSwitch defaultChecked={defaultChecked} />}
+        control={
+          <CustomSwitch
+            name={name}
+            defaultChecked={defaultChecked}
+            onChange={onChange}
+          />
+        }
         label={label || ""}
       />
     </FormGroup>
