@@ -18,6 +18,7 @@ const useAdminAuth = () => {
   // Simple Email and Password Login
   const handleSubmitLogin = async (values: SIGN_IN_VALUES) => {
     try {
+      setErrorMessage("");
       setLoading(true);
       const response: DynamicObject = await httpCall().post(
         USERS_LOGIN,

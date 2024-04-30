@@ -13,6 +13,7 @@ const AdminSignIn = () => {
   const initialValues: SIGN_IN_VALUES = {
     email: "",
     password: "",
+    remember_me_days: null,
   };
 
   const { handleSubmitLogin, loading, errorMessage } = useAdminAuth();
@@ -41,7 +42,7 @@ const AdminSignIn = () => {
           validationSchema={signInValidationSchema}
           onSubmit={handleSubmitLogin}
         >
-          {({ values, errors, touched, handleChange }) => (
+          {({ values, errors, touched, handleChange, setFieldValue }) => (
             <Form>
               <Stack>
                 <Stack alignItems="center" gap="32px">
@@ -93,6 +94,14 @@ const AdminSignIn = () => {
                       <CheckboxField
                         className=""
                         title="Remember for 30 days"
+                        name="remember_me_days"
+                        value={values.remember_me_days ? true : false}
+                        onChange={(e) =>
+                          setFieldValue(
+                            "remember_me_days",
+                            e.target.checked ? 30 : 1
+                          )
+                        }
                       />
                     </Stack>
                     <Typography className="f-14 lh-20 f-w-400 clr-gray-1000">
