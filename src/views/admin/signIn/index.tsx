@@ -1,7 +1,7 @@
 import { Formik, FormikHelpers, Form } from "formik";
 
 import { ButtonComponent } from "@/components/Button";
-import { CheckboxComponent } from "@/components/Checkbox/CheckboxComponent";
+import { CheckboxField } from "@/components/Checkbox";
 import { InputField } from "@/components/InputFields";
 import { Logo } from "@/components/logo";
 import { Stack, Typography } from "@mui/material";
@@ -96,7 +96,7 @@ const AdminSignIn = () => {
                     justifyContent="space-between"
                   >
                     <Stack flexDirection="row" alignItems="center">
-                      <CheckboxComponent
+                      <CheckboxField
                         className=""
                         title="Remember for 30 days"
                       />
