@@ -5,6 +5,8 @@ import DataTable from "@/components/DataTable";
 import { PaginationType } from "@/constants/types";
 import { useState } from "react";
 import { SearchBox } from "@/components/Search/searchBox";
+import CreateGrant from "./createGrant";
+import SideDrawer from "@/components/Drawer";
 
 const data = [
   {
@@ -25,8 +27,10 @@ const Grants = () => {
   const [pagination] = useState<PaginationType>({
     rowsPerPage: 10,
     page: 1,
-    totalRecords: 3,
+    totalRecords: 16,
   });
+
+  const [openDrawer, closeDrawer] = useState(false);
 
   const columns = [
     { key: "title", label: "Organization & County" },
@@ -43,6 +47,8 @@ const Grants = () => {
   };
 
   return (
+    <>
+
     <Stack
     gap="24px"
     >
@@ -109,6 +115,11 @@ const Grants = () => {
       />
       </Stack>
     </Stack>
+
+     <SideDrawer open={openDrawer} onClose={() => closeDrawer(false)}>
+        <CreateGrant />
+      </SideDrawer>
+    </>
   );
 };
 
