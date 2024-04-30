@@ -6,6 +6,7 @@ import { PaginationType } from "@/constants/types";
 import { useState } from "react";
 import CreateGrant from "./createGrant";
 import SideDrawer from "@/components/Drawer";
+import { getCurrentDate } from "@/helpers/utils";
 
 const data = [
   {
@@ -36,7 +37,7 @@ const Grants = () => {
     description: "",
     type: "",
     amount: null,
-    deadlineDate: new Date(),
+    deadlineDate: getCurrentDate(),
     sendInvitation: false,
     status: true,
   });

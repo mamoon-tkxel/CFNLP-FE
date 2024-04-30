@@ -7,10 +7,18 @@ import { TextArea } from "@/components/TextAreaField";
 import { ButtonComponent } from "@/components/Button";
 import { ADMIN_CREATE_GRANT_VALUES } from "@/constants/types/forms";
 import { createGrantValidationSchema } from "@/helpers/validations/AdminForms";
+import { getCurrentDate } from "@/helpers/utils";
 
 interface CREATE_GRANT_TYPES {
   initialValues: ADMIN_CREATE_GRANT_VALUES;
 }
+
+const TYPE_OPTIONS = [
+  {
+    label: "TYPE",
+    value: "type",
+  },
+];
 
 const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
   const handleSubmit = (
@@ -48,7 +56,13 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
               onChange={handleChange}
             />
 
-            <SelectField label="Grant Type" />
+            <SelectField
+              label="Grant Type"
+              options={TYPE_OPTIONS}
+              value={values.type}
+              name="type"
+              onChange={handleChange}
+            />
             {errors.type && touched.type && errors.type}
 
             <InputField
@@ -56,7 +70,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
               value={values.amount}
               onChange={handleChange}
               label="Grant Amount per charter"
-              type="text"
+              type="number"
             />
             <InputField
               value={values.deadlineDate}
@@ -64,15 +78,28 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
               name="deadlineDate"
               label="Application Deadline"
               type="date"
+              inputProps={{
+                min: getCurrentDate(), // Disable previous dates
+              }}
             />
             <>
               {errors.deadlineDate &&
                 touched.deadlineDate &&
                 errors?.deadlineDate}
             </>
-            <SwitchButton label={"Send Grant Invitation to Counties"} />
+            <SwitchButton
+              name="sendInvitation"
+              onChange={handleChange}
+              defaultChecked={!!values.sendInvitation}
+              label={"Send Grant Invitation to Counties"}
+            />
 
-            <SwitchButton label={"Active"} defaultChecked={true} />
+            <SwitchButton
+              label={values.status ? "Active" : "InActive"}
+              defaultChecked={!!values.status}
+              name="status"
+              onChange={handleChange}
+            />
 
             <ButtonComponent
               text="save"

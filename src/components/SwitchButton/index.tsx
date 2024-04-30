@@ -1,17 +1,33 @@
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import { SyntheticEvent } from "react";
 
 interface SWITCH_BUTTON {
-  defaultChecked?: boolean;
+  name: string;
+  defaultChecked?: boolean | undefined;
   label?: string;
+  onChange?:
+    | ((event: SyntheticEvent<Element, Event>, checked: boolean) => void)
+    | undefined;
 }
 
-export const SwitchButton = ({ defaultChecked, label }: SWITCH_BUTTON) => {
+export const SwitchButton = ({
+  defaultChecked,
+  label,
+  onChange,
+  name,
+}: SWITCH_BUTTON) => {
   return (
     <FormGroup>
       <FormControlLabel
-        control={<Switch defaultChecked={defaultChecked} />}
+        control={
+          <Switch
+            name={name}
+            defaultChecked={defaultChecked}
+            onChange={onChange}
+          />
+        }
         label={label || ""}
       />
     </FormGroup>

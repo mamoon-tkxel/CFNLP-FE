@@ -8,7 +8,7 @@ export interface ADMIN_CREATE_GRANT_VALUES {
   description?: string;
   type: string;
   amount?: null | number;
-  deadlineDate: Date;
+  deadlineDate: string;
   sendInvitation: boolean;
   status: boolean;
 }
