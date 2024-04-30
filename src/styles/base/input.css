@@ -7484,8 +7484,11 @@
   background-color: #475467 !important;
 }
 
-.border-clr-l-grey {
+.border-clr-l-grey-100 {
   border-color: #475467 !important;
+}
+.border-clr-l-grey-200 {
+  border-color: #B5B8BE !important;
 }
 
 .clr-d-grey {

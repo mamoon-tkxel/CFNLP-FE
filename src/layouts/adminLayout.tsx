@@ -19,7 +19,8 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
           minWidth:"calc(100vw - 230px)",
           maxWidth:"calc(100vw - 230px)",
           overflowY:"auto",
-          overflowX:"hidden"
+          overflowX:"hidden",
+          padding:"24px"
           }}> {children}</Box>
       </Stack>
     </Stack>

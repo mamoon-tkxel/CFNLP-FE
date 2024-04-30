@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { Pagination } from "@/components/Pagination";
+import { Paginations } from "@/components/Pagination";
 import "./DataTable.scss";
 
 import {
   CircularProgress,
   Paper,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -15,6 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import { DynamicObject } from "@/constants/types";
+import { sortingIcon } from "@/assets/svgs";
 
 export interface TableColumn {
   key: string;
@@ -177,30 +179,59 @@ const DataTable: React.FC<DataTableTypes> = ({
         <TableHead>
           <TableRow>
             {showColumnCheckbox && (
-              <TableCell className="checkboxCol">
-                <input
-                  type="checkbox"
-                  onChange={(e) => {
-                    handleCheckboxSelection(
-                      slicedData,
-                      e.target.checked,
-                      "multiple"
-                    );
-                    togglerHandler(slicedData, e.target.checked, "multiple");
+              <>
+                <TableCell
+                  className="checkboxCol"
+                  sx={{
+                    backgroundColor: "#F5F5FA",
+                    boxShadow: "0px -1px 0px 0px #F1F1F1 inset",
                   }}
-                  checked={tableRow()}
-                />
-              </TableCell>
+                >
+                  <Stack alignItems="center" flexDirection="row" gap="10px">
+                    {sortingIcon}
+
+                    <input
+                      type="checkbox"
+                      onChange={(e) => {
+                        handleCheckboxSelection(
+                          slicedData,
+                          e.target.checked,
+                          "multiple"
+                        );
+                        togglerHandler(
+                          slicedData,
+                          e.target.checked,
+                          "multiple"
+                        );
+                      }}
+                      checked={tableRow()}
+                    />
+                  </Stack>
+                </TableCell>
+              </>
             )}
             {columns.map((column, index) => (
-              <TableCell key={`${index}tablebodyCell`}>
+              <TableCell
+                key={`${index}tablebodyCell`}
+                sx={{
+                  backgroundColor: "#F5F5FA",
+                  boxShadow: "0px -1px 0px 0px #F1F1F1 inset",
+                }}
+              >
                 <span className="table-header-cell-wrapper">
-                  <span className="table-head-title-icon">{column.label}</span>
+                  <span className="f-14 lh-21 f-w-500 clr-gray-100">
+                    {column.label}
+                  </span>
                 </span>
               </TableCell>
             ))}
             {!hideActionColumn && (
-              <TableCell>
+              <TableCell
+                sx={{
+                  backgroundColor: "#F5F5FA",
+                  boxShadow: "0px -1px 0px 0px #F1F1F1 inset",
+                }}
+              >
                 {!hideActionColumnText ? actionColumnText || "Actions" : null}
               </TableCell>
             )}
@@ -213,19 +244,23 @@ const DataTable: React.FC<DataTableTypes> = ({
                 <TableRow>
                   {showRowCheckboxes && (
                     <TableCell className="checkboxCol">
-                      <input
-                        checked={selectedRows?.some(
-                          (item: { _id: number }) => item._id === row._id
-                        )}
-                        onChange={(e) => {
-                          handleCheckboxSelection(
-                            { ...row, isExpandable: true },
-                            e.target.checked,
-                            "single"
-                          );
-                          togglerHandler(row, e.target.checked, "single");
-                        }}
-                      />
+                      <Stack alignItems="center" flexDirection="row" gap="10px">
+                        {sortingIcon}
+                        <input
+                          checked={selectedRows?.some(
+                            (item: { _id: number }) => item._id === row._id
+                          )}
+                          onChange={(e) => {
+                            handleCheckboxSelection(
+                              { ...row, isExpandable: true },
+                              e.target.checked,
+                              "single"
+                            );
+                            togglerHandler(row, e.target.checked, "single");
+                          }}
+                          type={"checkbox"}
+                        />
+                      </Stack>
                     </TableCell>
                   )}
                   {columns.map((column, index) => (
@@ -275,7 +310,7 @@ const DataTable: React.FC<DataTableTypes> = ({
         </TableBody>
       </Table>
       {!hidePagination && pagination && (
-        <Pagination
+        <Paginations
           pagination={{
             ...pagination,
             onPageChange: pageChangeHandler,

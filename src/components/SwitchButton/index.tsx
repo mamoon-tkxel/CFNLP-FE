@@ -1,28 +1,47 @@
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import { SyntheticEvent } from "react";
+import Switch, { SwitchProps } from "@mui/material/Switch";
+import { styled } from "@mui/material";
 
-interface SWITCH_BUTTON {
-  name: string;
-  defaultChecked?: boolean | undefined;
+type SWITCH_BUTTON = SwitchProps & {
+  defaultChecked?: boolean;
   label?: string;
-  onChange?:
-    | ((event: SyntheticEvent<Element, Event>, checked: boolean) => void)
-    | undefined;
-}
+};
+const CustomSwitch = styled(Switch)(() => ({
+  width: 36, // Fixed width from properties
+  height: 20, // Fixed height from properties
+  padding: 2, // Padding from properties
+  "& .MuiSwitch-switchBase": {
+    padding: 2, // Padding from properties
+    "&.Mui-checked": {
+      transform: "translateX(16px)", // Move the thumb to the end for "active" state
+      color: "#fff", // Assuming you want a white thumb
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    width: 16, // Radius from properties times two for the full width
+    height: 16, // Radius from properties times two for the full height
+    // boxShadow: '0px 1px 2px 0px #1018280F'
 
+    boxShadow: "0px 1px 3px 0px #1018281A",
+  },
+  "& .MuiSwitch-track": {
+    borderRadius: 12, // Radius from properties
+    backgroundColor: "#F2F4F7", // Colors from properties
+    opacity: 1, // No transparency
+  },
+}));
 export const SwitchButton = ({
+  name,
+  onChange,
   defaultChecked,
   label,
-  onChange,
-  name,
 }: SWITCH_BUTTON) => {
   return (
     <FormGroup>
       <FormControlLabel
         control={
-          <Switch
+          <CustomSwitch
             name={name}
             defaultChecked={defaultChecked}
             onChange={onChange}

@@ -27,6 +27,9 @@ $colors: (
   'gray-700': #344054,
   'gray-900': #1b2559,
   'gray-400': #42495c,
+  'gray-300':#B5B8BE,
+  'gray-200':#A8B0B9,
+  'gray-100':#6D6D97,
   'gray-primary': #f5f7fa,
   'gray-500-light': #9099ab,
   'grey-charchoal': #667085,
@@ -158,6 +161,7 @@ $box_Shadow: (
   'murcury-clr': #e1e1e1,
   'sec-white': #fff,
   'text-grey': #767676,
+  'button-grey':#0000000D,
 );
 
 @function get_box_Shadow($clr_pri) {
