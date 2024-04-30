@@ -1,4 +1,4 @@
-import { Formik, FormikHelpers, Form } from "formik";
+import { Formik, Form } from "formik";
 
 import { ButtonComponent } from "@/components/Button";
 import { CheckboxField } from "@/components/Checkbox";
@@ -7,6 +7,7 @@ import { Logo } from "@/components/logo";
 import { Stack, Typography } from "@mui/material";
 import { SIGN_IN_VALUES } from "@/constants/types/forms";
 import { signInValidationSchema } from "@/helpers/validations/AdminForms";
+import useAdminAuth from "@/hooks/useAdminAuth";
 
 const AdminSignIn = () => {
   const initialValues: SIGN_IN_VALUES = {
@@ -14,15 +15,7 @@ const AdminSignIn = () => {
     password: "",
   };
 
-  const handleSubmit = (
-    values: SIGN_IN_VALUES,
-    { setSubmitting }: FormikHelpers<SIGN_IN_VALUES>
-  ) => {
-    setTimeout(() => {
-      console.log(values);
-      setSubmitting(false);
-    }, 500);
-  };
+  const { handleSubmitLogin, loading } = useAdminAuth();
 
   return (
     <Stack
@@ -46,7 +39,7 @@ const AdminSignIn = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={signInValidationSchema}
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitLogin}
         >
           {({ values, errors, touched, handleChange }) => (
             <Form>
@@ -112,6 +105,7 @@ const AdminSignIn = () => {
                 type="submit"
                 variant="contained"
                 className="bg-clr-primary-blue-700 b-radius-8"
+                disabled={loading}
                 fullWidth
               />
             </Form>
