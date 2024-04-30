@@ -1,7 +1,7 @@
 import { USERS_LOGIN } from "@/constants/apiEndPoints";
 import { DynamicObject } from "@/constants/types";
 import { SIGN_IN_VALUES } from "@/constants/types/forms";
-import httpCall from "@/helpers/httpRequests";
+import httpCall from "@/httpRequests";
 import { loginSuccess } from "@/store/slices/authSlice";
 import { useState } from "react";
 

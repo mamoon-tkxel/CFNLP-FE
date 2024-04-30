@@ -6,7 +6,7 @@ import { InputField } from "@/components/InputFields";
 import { Logo } from "@/components/logo";
 import { Stack, Typography } from "@mui/material";
 import { SIGN_IN_VALUES } from "@/constants/types/forms";
-import { signInValidationSchema } from "@/helpers/validations/AdminForms";
+import { signInValidationSchema } from "@/utils/validations/AdminForms";
 import useAdminAuth from "@/hooks/useAdminAuth";
 
 const AdminSignIn = () => {
