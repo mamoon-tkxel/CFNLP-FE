@@ -31,6 +31,16 @@ const Grants = () => {
 
   const [openDrawer, closeDrawer] = useState(false);
 
+  const [grantInitialValues] = useState({
+    title: "",
+    description: "",
+    type: "",
+    amount: null,
+    deadlineDate: new Date(),
+    sendInvitation: false,
+    status: true,
+  });
+
   const columns = [
     { key: "title", label: "Organization & County" },
     { key: "contact", label: "Contact Person" },
@@ -73,7 +83,7 @@ const Grants = () => {
         />
       </div>
       <SideDrawer open={openDrawer} onClose={() => closeDrawer(false)}>
-        <CreateGrant />
+        <CreateGrant initialValues={grantInitialValues} />
       </SideDrawer>
     </>
   );
