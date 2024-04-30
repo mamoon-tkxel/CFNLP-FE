@@ -14,3 +14,9 @@ export type PaginationType = {
   page: number;
   totalRecords: number;
 };
+
+export type TablePaginationType = Partial<{
+  page: number;
+  pageSize: number;
+  totalRecords: number;
+}>;

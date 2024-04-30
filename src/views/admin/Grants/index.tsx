@@ -2,7 +2,7 @@ import { addIcon, exportIcon, filterIcon, sortingIcon } from "@/assets/svgs";
 import { ButtonComponent } from "@/components/Button";
 import { Stack, Typography } from "@mui/material";
 import DataTable from "@/components/DataTable";
-import { PaginationType } from "@/constants/types";
+import { PaginationType, TablePaginationType } from "@/constants/types";
 import { useState } from "react";
 import { SearchBox } from "@/components/Search/searchBox";
 import CreateGrant from "./createGrant";
@@ -25,11 +25,24 @@ const data = [
 ];
 
 const Grants = () => {
-  const [pagination] = useState<PaginationType>({
+  const [pagination, setPagination] = useState<PaginationType>({
     rowsPerPage: 10,
     page: 1,
     totalRecords: 16,
   });
+
+  const handlePageChange = ({
+    page,
+    pageSize,
+    totalRecords,
+  }: TablePaginationType) => {
+    setPagination((prevState) => ({
+      ...prevState,
+      page: page ?? prevState.page,
+      rowsPerPage: pageSize ?? prevState.rowsPerPage,
+      totalRecords: totalRecords ?? prevState.totalRecords,
+    }));
+  };
 
   const [openDrawer, closeDrawer] = useState(false);
 
@@ -136,6 +149,7 @@ const Grants = () => {
             settings={tableSetting}
             pagination={pagination}
             loading={false}
+            handlePageChange={handlePageChange}
           />
         </Stack>
       </Stack>
