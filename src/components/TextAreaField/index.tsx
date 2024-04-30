@@ -1,8 +1,9 @@
-interface TEXT_AREA {
-  label?: string;
-}
+// interface TEXT_AREA {
+//   label?: string;
+// }
 
-export const TextArea = ({ label, ...arg }: TEXT_AREA) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const TextArea = ({ label, ...arg }: any) => {
   return (
     <div>
       {label && <label>{label}</label>}
