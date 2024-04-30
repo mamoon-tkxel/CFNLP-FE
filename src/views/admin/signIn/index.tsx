@@ -15,7 +15,7 @@ const AdminSignIn = () => {
     password: "",
   };
 
-  const { handleSubmitLogin, loading } = useAdminAuth();
+  const { handleSubmitLogin, loading, errorMessage } = useAdminAuth();
 
   return (
     <Stack
@@ -83,6 +83,7 @@ const AdminSignIn = () => {
                   />
 
                   {errors.password && touched.password && errors.password}
+                  {errorMessage && <div>{errorMessage}</div>}
                   <Stack
                     flexDirection="row"
                     alignItems="center"

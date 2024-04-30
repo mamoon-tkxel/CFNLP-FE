@@ -3,9 +3,12 @@ import { Logo } from "../logo";
 import { arrowIcon, bellIcon } from "@/assets/svgs";
 import { resetAuthUser } from "@/store/slices/authSlice";
 import { useDispatch } from "react-redux";
+import { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state: RootState) => state.auth) || {};
   return (
     <Stack
       alignItems="center"
@@ -50,7 +53,7 @@ export const Header = () => {
             O
           </span>
           <Typography onClick={() => dispatch(resetAuthUser())}>
-            Olivia
+            {userInfo?.first_name || "Olivia"}
           </Typography>
           {arrowIcon}
         </Fab>

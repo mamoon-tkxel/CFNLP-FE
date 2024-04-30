@@ -1,5 +1,6 @@
 export type UserAuth = {
   _id: string;
+  first_name: string;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
