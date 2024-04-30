@@ -79,7 +79,7 @@ const Grants = () => {
           sx={{
             backgroundColor: "#FFFFFF",
           }}
-          paddingY="24px"
+          p="24px 0 0 0"
         >
           <Stack
             display="flex"
