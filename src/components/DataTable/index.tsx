@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Pagination } from "@/components/Pagination";
+import { Paginations } from "@/components/Pagination";
 import "./DataTable.scss";
 
 import {
@@ -177,7 +177,10 @@ const DataTable: React.FC<DataTableTypes> = ({
         <TableHead>
           <TableRow>
             {showColumnCheckbox && (
+              <>
               <TableCell className="checkboxCol">
+              filter
+
                 <input
                   type="checkbox"
                   onChange={(e) => {
@@ -191,16 +194,19 @@ const DataTable: React.FC<DataTableTypes> = ({
                   checked={tableRow()}
                 />
               </TableCell>
+              </>
+
             )}
             {columns.map((column, index) => (
-              <TableCell key={`${index}tablebodyCell`}>
+              <TableCell key={`${index}tablebodyCell`} sx={{backgroundColor:"#F5F5FA", boxShadow: "0px -1px 0px 0px #F1F1F1 inset"
+            }}>
                 <span className="table-header-cell-wrapper">
                   <span className="table-head-title-icon">{column.label}</span>
                 </span>
               </TableCell>
             ))}
             {!hideActionColumn && (
-              <TableCell>
+              <TableCell sx={{backgroundColor:"#F5F5FA", boxShadow: "0px -1px 0px 0px #F1F1F1 inset"}}>
                 {!hideActionColumnText ? actionColumnText || "Actions" : null}
               </TableCell>
             )}
@@ -213,6 +219,7 @@ const DataTable: React.FC<DataTableTypes> = ({
                 <TableRow>
                   {showRowCheckboxes && (
                     <TableCell className="checkboxCol">
+                      filter
                       <input
                         checked={selectedRows?.some(
                           (item: { _id: number }) => item._id === row._id
@@ -225,6 +232,9 @@ const DataTable: React.FC<DataTableTypes> = ({
                           );
                           togglerHandler(row, e.target.checked, "single");
                         }}
+                        type={"checkbox"}
+
+                        
                       />
                     </TableCell>
                   )}
@@ -275,7 +285,7 @@ const DataTable: React.FC<DataTableTypes> = ({
         </TableBody>
       </Table>
       {!hidePagination && pagination && (
-        <Pagination
+        <Paginations
           pagination={{
             ...pagination,
             onPageChange: pageChangeHandler,

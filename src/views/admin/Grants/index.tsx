@@ -1,9 +1,10 @@
-import { addIcon } from "@/assets/svgs";
+import { addIcon, exportIcon, filterIcon, sortingIcon } from "@/assets/svgs";
 import { ButtonComponent } from "@/components/Button";
 import { Stack, Typography } from "@mui/material";
 import DataTable from "@/components/DataTable";
 import { PaginationType } from "@/constants/types";
 import { useState } from "react";
+import { SearchBox } from "@/components/Search/searchBox";
 
 const data = [
   {
@@ -24,7 +25,7 @@ const Grants = () => {
   const [pagination] = useState<PaginationType>({
     rowsPerPage: 10,
     page: 1,
-    totalRecords: 100,
+    totalRecords: 3,
   });
 
   const columns = [
@@ -37,24 +38,68 @@ const Grants = () => {
   const tableSetting = {
     hideActionColumn: false,
     showActionRow: false,
+    showRowCheckboxes: true,
+    showColumnCheckbox:true
   };
 
   return (
-    <>
-    <Stack>
+    <Stack
+    gap="24px"
+    >
+
       <Stack
       display="flex"
       justifyContent="space-between"
       flexDirection="row"
-      padding="24px 24px 32px 24px"
       alignItems="center"
       >
         <Typography className="f-20 lh-23 f-w-800">Grants</Typography>
-        <ButtonComponent startIcon={addIcon} className="bg-clr-primary-blue-700 clr-white" title="Add Grant"/>
-      </Stack>
-    </Stack>
-    <div>
-      <div>Grants listing</div>
+        <ButtonComponent startIcon={addIcon} className="bg-clr-primary-blue-700 clr-white" text="Add Grant"/>
+      </Stack>    
+      <Stack
+      borderRadius="24px"
+      gap="24px"
+      sx={{
+        backgroundColor:"#FFFFFF"
+      }}
+      paddingY="24px"
+      >
+        <Stack
+        display="flex"
+        justifyContent="space-between"
+        flexDirection="row"
+        paddingX="24px"
+        >
+          <Stack
+          display="flex"
+          justifyContent="space-between"
+          flexDirection="row"
+          gap="10px"
+
+          >
+          <SearchBox/>
+          <ButtonComponent startIcon={filterIcon} text="Filter" variant="outlined" className="h-40 clr-gray-500 border-clr-gray-300"/>
+          </Stack>
+          
+          <Stack
+          display="flex"
+          justifyContent="space-between"
+          flexDirection="row"
+          gap="8px"
+          >
+          <ButtonComponent startIcon={exportIcon} text="Export" variant="outlined" className="h-40 clr-gray-500 border-clr-gray-300"/>
+          <ButtonComponent startIcon={sortingIcon} text="Sort by:Title" variant="outlined" className="h-40 clr-gray-500 border-clr-gray-300" 
+           sx={{ "svg":{
+              'path':{
+          
+                fill:"#5F6269"
+              }
+            },
+          }}
+          />
+          </Stack>
+      
+        </Stack>
       <DataTable
         columns={columns}
         data={data}
@@ -62,8 +107,8 @@ const Grants = () => {
         pagination={pagination}
         loading={false}
       />
-    </div>
-    </>
+      </Stack>
+    </Stack>
   );
 };
 

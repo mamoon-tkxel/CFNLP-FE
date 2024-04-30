@@ -1,8 +1,8 @@
 import { Button, ButtonProps } from "@mui/material";
 type ButtonComponentProps = ButtonProps & {
   type?: string;
-  text: string;
-  className: string;
+  text?: string;
+  className?: string;
   onClick?: () => void;
 };
 export const ButtonComponent = ({

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import {
   MenuItem,
   Select,
@@ -16,7 +17,7 @@ type PaginationType = {
   onChangeRowsPerPage: (newRowsPerPage: number) => void;
   totalRecords: number;
 };
-export const Pagination = ({ pagination }: { pagination: PaginationType }) => {
+export const Paginations = ({ pagination }: { pagination: PaginationType }) => {
   const [pageDropdownValue, setPageDropdownValue] = useState(pagination.page);
   const [perPageDropdown, setPerPageDropdown] = useState<number[]>([]);
 
@@ -66,7 +67,7 @@ export const Pagination = ({ pagination }: { pagination: PaginationType }) => {
         </Select>
       </div>
       <div className="custom-select-pagination-wrapper rows-per-page">
-        <Typography variant="body2">Rows per page</Typography>
+        <Typography variant="body2">Items per page</Typography>
         <Select
           className="page-select"
           value={pagination.rowsPerPage}
@@ -84,6 +85,10 @@ export const Pagination = ({ pagination }: { pagination: PaginationType }) => {
           ))}
         </Select>
       </div>
+
+      <Stack spacing={2}>
+      <Pagination count={pagination.totalRecords} showFirstButton showLastButton />
+    </Stack>
 
       <TablePagination
         rowsPerPageOptions={[]}
