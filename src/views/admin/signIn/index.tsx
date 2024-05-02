@@ -106,41 +106,42 @@ const AdminSignIn = () => {
                       },
                     }}
                   />
-
-                  <Stack
-                    flexDirection="row"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    <Stack flexDirection="row" alignItems="center">
-                      <CheckboxField
-                        className=""
-                        title="Remember for 30 days"
-                        name="remember_me_days"
-                        value={values.remember_me_days ? true : false}
-                        onChange={(e) =>
-                          setFieldValue(
-                            "remember_me_days",
-                            e.target.checked ? 30 : 1
-                          )
-                        }
-                      />
+                  <Stack gap="24px">
+                    <Stack
+                      flexDirection="row"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <Stack flexDirection="row" alignItems="center">
+                        <CheckboxField
+                          className=""
+                          title="Remember for 30 days"
+                          name="remember_me_days"
+                          value={values.remember_me_days ? true : false}
+                          onChange={(e) =>
+                            setFieldValue(
+                              "remember_me_days",
+                              e.target.checked ? 30 : 1
+                            )
+                          }
+                        />
+                      </Stack>
+                      <Typography className="f-14 lh-20 f-w-400 clr-gray-1000">
+                        Forgot Password
+                      </Typography>
+                      {errorMessage && <div>{errorMessage}</div>}
                     </Stack>
-                    <Typography className="f-14 lh-20 f-w-400 clr-gray-1000">
-                      Forgot Password
-                    </Typography>
-                    {errorMessage && <div>{errorMessage}</div>}
+                    <ButtonComponent
+                      text="Log In"
+                      type="submit"
+                      variant="contained"
+                      className="bg-clr-primary-blue-700 b-radius-8"
+                      disabled={loading}
+                      fullWidth
+                    />
                   </Stack>
                 </Stack>
               </Stack>
-              <ButtonComponent
-                text="Log In"
-                type="submit"
-                variant="contained"
-                className="bg-clr-primary-blue-700 b-radius-8"
-                disabled={loading}
-                fullWidth
-              />
             </Form>
           )}
         </Formik>
