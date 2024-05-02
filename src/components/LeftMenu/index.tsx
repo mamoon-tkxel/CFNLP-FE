@@ -22,43 +22,44 @@ const SIDEBAR = [
     icon: dashboardIcon,
     label: "Dashboard",
     link: "/admin",
-    activeLink: "/admin",
+    activeLink: ["/admin"],
   },
   {
     icon: grantIcon,
     label: "Grants",
     link: "grants",
-    activeLink: "/admin/grants",
+    activeLink: ["/admin/grants", "/admin/grants/23/applications"],
   },
   {
     icon: applicationIcon,
     label: "Applications",
     link: "applications",
-    activeLink: "/admin/applications",
+    activeLink: ["/admin/applications"],
   },
 
   {
     icon: reportIcon,
     label: "Reports",
     link: "/",
-    activeLink: "/admin/reports",
+    activeLink: ["/admin/reports"],
   },
   {
     icon: countyIcon,
     label: "County Profiles",
     link: "/",
-    activeLink: "/admin/county",
+    activeLink: ["/admin/county"],
   },
   {
     icon: usersIcon,
     label: "Users",
     link: "/",
-    activeLink: "/admin/user",
+    activeLink: ["/admin/user"],
   },
 ];
 
 export const LeftMenu = () => {
   const [active, setActive] = useState(window?.location?.pathname);
+
   return (
     <Stack
       sx={{
@@ -73,20 +74,25 @@ export const LeftMenu = () => {
           <Link
             to={item.link}
             onClick={() => {
-              setActive(item.activeLink);
+              setActive(item.activeLink[0]);
             }}
-            className={active === item?.activeLink ? "active" : ""}
+            className={item?.activeLink.includes(active) ? "active" : ""}
             style={{ textDecoration: "none" }}
             key={index}
           >
             <ListItem
               sx={{
-                backgroundColor:
-                  active === item?.activeLink ? "#0C1A75" : "#ffffff",
-                color: active === item?.activeLink ? "#ffffff" : "#5F6269",
+                backgroundColor: item?.activeLink.includes(active)
+                  ? "#0C1A75"
+                  : "#ffffff",
+                color: item?.activeLink.includes(active)
+                  ? "#ffffff"
+                  : "#5F6269",
                 svg: {
                   path: {
-                    fill: active === item?.activeLink ? "#ffffff" : "#5F6269",
+                    fill: item?.activeLink.includes(active)
+                      ? "#ffffff"
+                      : "#5F6269",
                   },
                 },
               }}

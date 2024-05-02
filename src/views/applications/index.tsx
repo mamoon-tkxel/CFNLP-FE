@@ -1,8 +1,9 @@
 import { Stack, Typography } from "@mui/material";
-import useAdminGrant from "@/hooks/useAdminGrant";
 import { ApplicationFilters } from "./filters";
 import { ApplicationTabs } from "./tabs";
 import { ApplicationListing } from "./listing";
+import useAdminApplication from "@/hooks/useAdminApplication";
+import { useNavigate } from "react-router-dom";
 
 type APPLICATION_TYPES = {
   pageTitle?: string;
@@ -13,7 +14,8 @@ const Applications = ({
   pageTitle = "Applications",
   applicationType = "AdminApplications",
 }: APPLICATION_TYPES) => {
-  const { pagination, handlePageChange, TableData } = useAdminGrant();
+  const naviagte = useNavigate();
+  const { pagination, handlePageChange, TableData } = useAdminApplication();
 
   return (
     <>
@@ -24,7 +26,13 @@ const Applications = ({
           flexDirection="row"
           alignItems="center"
         >
-          <Typography className="f-20 lh-23 f-w-800">{pageTitle}</Typography>
+          <Typography className="f-20 lh-23 f-w-800">
+            <span onClick={() => naviagte(-1)}>
+              {" "}
+              {applicationType === "AdminGrantApplication" ? "<--" : ""}
+            </span>
+            {pageTitle}
+          </Typography>
         </Stack>
         <ApplicationTabs onChange={(value) => console.log(value)} />
         <Stack
