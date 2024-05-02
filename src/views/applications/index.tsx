@@ -16,7 +16,8 @@ const Applications = ({
   applicationType = APPLICATION_TYPE.ADMIN_APPLICATION,
 }: APPLICATION_TYPES) => {
   const navigate = useNavigate();
-  const { pagination, handlePageChange, TableData } = useAdminApplication();
+  const { pagination, handlePageChange, TableData, actionMenusClickHandler } =
+    useAdminApplication({ applicationType });
 
   return (
     <>
@@ -52,6 +53,7 @@ const Applications = ({
             pagination={pagination}
             loading={false}
             handlePageChange={handlePageChange}
+            actionMenusClickHandler={actionMenusClickHandler}
           />
         </Stack>
       </Stack>

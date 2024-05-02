@@ -9,6 +9,7 @@ import AdminUsers from "@/views/admin/users";
 import AdminReports from "@/views/admin/Reports";
 import AdminReportsListing from "@/views/admin/Reports/reportsListing";
 import AdminCountyDetail from "@/views/admin/countyDetail";
+import AdminGrantDetail from "@/views/admin/Grants/grantDetails";
 
 export const AdminRoutes = () => {
   return (
@@ -19,6 +20,11 @@ export const AdminRoutes = () => {
         <Route
           path="/grants/:id/applications"
           element={<GrantApplications />}
+        />
+
+        <Route
+          path="/grants/:id/applications/view"
+          element={<AdminGrantDetail />}
         />
 
         <Route path="/county-profiles" element={<CountyProfiles />} />

@@ -9,9 +9,15 @@ export const ApplicationListing = ({
   handlePageChange,
   loading,
   applicationType,
+  actionMenusClickHandler,
 }: DynamicObject) => {
   const ActionsRow = () => {
-    return <TableActionsRow applicationType={applicationType} />;
+    return (
+      <TableActionsRow
+        applicationType={applicationType}
+        actionMenusClickHandler={actionMenusClickHandler}
+      />
+    );
   };
 
   const tableSetting = {

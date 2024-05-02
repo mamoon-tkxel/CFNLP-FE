@@ -3,8 +3,10 @@ import { APPLICATION_TYPE } from "./types";
 
 export const TableActionsRow = ({
   applicationType,
+  actionMenusClickHandler,
 }: {
   applicationType: string;
+  actionMenusClickHandler: (value: string | number) => void;
 }) => {
   const ActionMenus = {
     [APPLICATION_TYPE.ADMIN_GRANT_APPLICATION]: [
@@ -41,7 +43,7 @@ export const TableActionsRow = ({
   return (
     <ActionMenu
       options={ActionMenus[applicationType]}
-      clickHandler={(value) => console.log(value)}
+      clickHandler={actionMenusClickHandler}
     />
   );
 };

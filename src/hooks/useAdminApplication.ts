@@ -1,4 +1,5 @@
 import { PaginationType, TablePaginationType } from "@/constants/types";
+import { APPLICATION_TYPE } from "@/views/applications/types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +14,14 @@ const TableData = [
     applications: "200",
   },
 ];
-const useAdminApplication = () => {
+
+interface ADMIN_APPLICATION_HOOK_TYPES {
+  applicationType: string;
+}
+
+const useAdminApplication = ({
+  applicationType,
+}: ADMIN_APPLICATION_HOOK_TYPES) => {
   const navigate = useNavigate();
 
   const [loading] = useState(false);
@@ -37,7 +45,12 @@ const useAdminApplication = () => {
     }));
   };
 
-  const actionHandler = (value: string | number) => {
+  const actionMenusClickHandler = (value: string | number) => {
+    if (applicationType === APPLICATION_TYPE.ADMIN_GRANT_APPLICATION) {
+      if (value === "detail") {
+        navigate("/admin/grants/12/applications/view");
+      }
+    }
     if (value === "view_application") {
       navigate("/admin/grants/12/applications");
     }
@@ -51,7 +64,7 @@ const useAdminApplication = () => {
     TableData,
     handlePageChange,
 
-    actionHandler,
+    actionMenusClickHandler,
   };
 };
 

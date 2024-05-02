@@ -30,3 +30,8 @@ export interface ADMIN_CREATE_USER_VALUES {
   email: string;
   sendInvitation: boolean;
 }
+
+export interface ASSIGN_GRANT_AMOUNT {
+  amount: number;
+  sendContact: boolean;
+}
