@@ -32,7 +32,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
   };
 
   return (
-    <Stack position={"relative"}>
+    <Stack>
       <Stack
         flexDirection="row"
         justifyContent="space-between"
@@ -58,15 +58,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   type="text"
                   value={values.title}
                   onChange={handleChange}
-                  sx={{
-                    backgroundColor: "#F8F9FA",
-                    borderRadius: "8px",
-                    border: "1px solid #DFE2E8",
-                    boxShadow: "0px 1px 2px 0px #1018280D",
-                    "& .MuiTextField": {
-                      height: "44px",
-                    },
-                  }}
+                  className="textField"
                 />
                 {errors.title && touched.title && errors.title}
 
@@ -75,7 +67,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   name="description"
                   placeholder="Enter a description..."
                   multiline
-                  rows={3}
+                  rows={4}
                   value={values.description}
                   onChange={handleChange}
                   sx={{
@@ -83,9 +75,6 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                     borderRadius: "8px",
                     border: "1px solid #DFE2E8",
                     boxShadow: "0px 1px 2px 0px #1018280D",
-                    "& .MuiTextField": {
-                      height: "44px",
-                    },
                   }}
                 />
 
@@ -94,7 +83,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   value={values.type}
                   name="type"
                   onChange={handleChange}
-                  className="drop-down-grant-type"
+                  className="drop-down-grant-type select"
                   options={TYPE_OPTIONS}
                 />
                 {errors.type && touched.type && errors.type}
@@ -106,15 +95,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   label="Grant Amount per charter"
                   type="number"
                   placeholder="$0.00"
-                  sx={{
-                    backgroundColor: "#F8F9FA",
-                    borderRadius: "8px",
-                    border: "1px solid #DFE2E8",
-                    boxShadow: "0px 1px 2px 0px #1018280D",
-                    "& .MuiTextField": {
-                      height: "44px",
-                    },
-                  }}
+                  className="textField"
                 />
                 <InputField
                   value={values.deadlineDate}
@@ -122,15 +103,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   name="deadlineDate"
                   label="Application Deadline"
                   type="date"
-                  sx={{
-                    backgroundColor: "#F8F9FA",
-                    borderRadius: "8px",
-                    border: "1px solid #DFE2E8",
-                    boxShadow: "0px 1px 2px 0px #1018280D",
-                    "& .MuiTextField": {
-                      height: "44px",
-                    },
-                  }}
+                  className="textField"
                   inputProps={{
                     min: getCurrentDate(),
                   }}
