@@ -31,7 +31,7 @@ const SIDEBAR = [
   {
     icon: applicationIcon,
     label: "Applications",
-    link: "/",
+    link: "applications",
   },
 
   {

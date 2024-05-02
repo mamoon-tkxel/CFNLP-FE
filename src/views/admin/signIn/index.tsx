@@ -13,7 +13,7 @@ const AdminSignIn = () => {
   const initialValues: SIGN_IN_VALUES = {
     email: "",
     password: "",
-    remember_me_days: null,
+    remember_me_days: 1,
   };
 
   const { handleSubmitLogin, loading, errorMessage } = useAdminAuth();
