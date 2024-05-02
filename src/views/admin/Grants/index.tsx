@@ -36,15 +36,11 @@ const Grants = () => {
     handlePageChange,
     grantInitialValues,
     TableData,
+    actionHandler,
   } = useAdminGrant();
 
   const ActionsRow = () => {
-    return (
-      <ActionMenu
-        options={ACTION_OPTIONS}
-        clickHandler={(value) => console.log(value)}
-      />
-    );
+    return <ActionMenu options={ACTION_OPTIONS} clickHandler={actionHandler} />;
   };
 
   const tableSetting = {

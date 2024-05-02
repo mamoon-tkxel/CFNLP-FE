@@ -202,7 +202,7 @@ const DataTable: React.FC<DataTableTypes> = ({
                 </TableCell>
               </>
             )}
-            {columns.map((column, index) => (
+            {columns?.map((column, index) => (
               <TableCell
                 key={`${index}tablebodyCell`}
                 sx={{
@@ -255,7 +255,7 @@ const DataTable: React.FC<DataTableTypes> = ({
                       </Stack>
                     </TableCell>
                   )}
-                  {columns.map((column, index) => (
+                  {columns?.map((column, index) => (
                     <TableCell
                       key={`${index}tablebodyCell`}
                       className={
