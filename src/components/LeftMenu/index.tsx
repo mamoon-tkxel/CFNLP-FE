@@ -22,37 +22,43 @@ const SIDEBAR = [
     icon: dashboardIcon,
     label: "Dashboard",
     link: "/admin",
+    activeLink: "/admin",
   },
   {
     icon: grantIcon,
     label: "Grants",
     link: "grants",
+    activeLink: "/admin/grants",
   },
   {
     icon: applicationIcon,
     label: "Applications",
     link: "applications",
+    activeLink: "/admin/applications",
   },
 
   {
     icon: reportIcon,
     label: "Reports",
     link: "/",
+    activeLink: "/admin/reports",
   },
   {
     icon: countyIcon,
     label: "County Profiles",
     link: "/",
+    activeLink: "/admin/county",
   },
   {
     icon: usersIcon,
     label: "Users",
     link: "/",
+    activeLink: "/admin/user",
   },
 ];
 
 export const LeftMenu = () => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(window?.location?.pathname);
   return (
     <Stack
       sx={{
@@ -67,19 +73,20 @@ export const LeftMenu = () => {
           <Link
             to={item.link}
             onClick={() => {
-              setActive(index);
+              setActive(item.activeLink);
             }}
-            className={active === index ? "active" : ""}
+            className={active === item?.activeLink ? "active" : ""}
             style={{ textDecoration: "none" }}
             key={index}
           >
             <ListItem
               sx={{
-                backgroundColor: active === index ? "#0C1A75" : "#ffffff",
-                color: active === index ? "#ffffff" : "#5F6269",
+                backgroundColor:
+                  active === item?.activeLink ? "#0C1A75" : "#ffffff",
+                color: active === item?.activeLink ? "#ffffff" : "#5F6269",
                 svg: {
                   path: {
-                    fill: active === index ? "#ffffff" : "#5F6269",
+                    fill: active === item?.activeLink ? "#ffffff" : "#5F6269",
                   },
                 },
               }}
