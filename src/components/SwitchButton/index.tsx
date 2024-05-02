@@ -16,7 +16,6 @@ const CustomSwitch = styled(Switch)(() => ({
     "&.Mui-checked": {
       transform: "translateX(16px)", // Move the thumb to the end for "active" state
       color: "#fff", // Assuming you want a white thumb
-      margin:0
     },
   },
   "& .MuiSwitch-thumb": {

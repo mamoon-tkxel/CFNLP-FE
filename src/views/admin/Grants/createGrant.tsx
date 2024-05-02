@@ -32,8 +32,13 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
   };
 
   return (
-    <Stack>
-      <Stack flexDirection="row" justifyContent="space-between" padding="16px">
+    <Stack position={"relative"}>
+      <Stack
+        flexDirection="row"
+        justifyContent="space-between"
+        padding="16px"
+        // position={"relative"}
+      >
         <Typography className="f-20 lh-23 f-w-500">Add Grant</Typography>
         {crossIcon}
       </Stack>
@@ -58,6 +63,9 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                     borderRadius: "8px",
                     border: "1px solid #DFE2E8",
                     boxShadow: "0px 1px 2px 0px #1018280D",
+                    "& .MuiTextField": {
+                      height: "44px",
+                    },
                   }}
                 />
                 {errors.title && touched.title && errors.title}
@@ -67,7 +75,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   name="description"
                   placeholder="Enter a description..."
                   multiline
-                  rows={4}
+                  rows={3}
                   value={values.description}
                   onChange={handleChange}
                   sx={{
@@ -75,6 +83,9 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                     borderRadius: "8px",
                     border: "1px solid #DFE2E8",
                     boxShadow: "0px 1px 2px 0px #1018280D",
+                    "& .MuiTextField": {
+                      height: "44px",
+                    },
                   }}
                 />
 
@@ -94,11 +105,15 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   onChange={handleChange}
                   label="Grant Amount per charter"
                   type="number"
+                  placeholder="$0.00"
                   sx={{
                     backgroundColor: "#F8F9FA",
                     borderRadius: "8px",
                     border: "1px solid #DFE2E8",
                     boxShadow: "0px 1px 2px 0px #1018280D",
+                    "& .MuiTextField": {
+                      height: "44px",
+                    },
                   }}
                 />
                 <InputField
@@ -112,6 +127,9 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                     borderRadius: "8px",
                     border: "1px solid #DFE2E8",
                     boxShadow: "0px 1px 2px 0px #1018280D",
+                    "& .MuiTextField": {
+                      height: "44px",
+                    },
                   }}
                   inputProps={{
                     min: getCurrentDate(),
