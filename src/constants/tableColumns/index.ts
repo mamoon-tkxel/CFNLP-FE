@@ -19,4 +19,10 @@ export const ADMIN_APPLICATION_COLUMNS: AdminApplicationColumns = {
     { key: "appliedDate", label: "Applied On" },
     { key: "status", label: "Status" },
   ],
+  GrantApplications: [
+    { key: "organizationCounty", label: "Organization and County" },
+    { key: "contactPerson", label: "Contact Person" },
+    { key: "appliedDate", label: "Applied On" },
+    { key: "status", label: "Status" },
+  ],
 };

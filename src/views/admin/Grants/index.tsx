@@ -9,6 +9,25 @@ import useAdminGrant from "@/hooks/useAdminGrant";
 import { ADMIN_GRANT_COLUMNS } from "@/constants/tableColumns";
 import { ActionMenu } from "@/components/ActionMenu";
 
+const ACTION_OPTIONS = [
+  {
+    label: "View Applications",
+    value: "view_application",
+  },
+  {
+    label: "Send Invitation",
+    value: "send_invitation",
+  },
+  {
+    label: "Edit",
+    value: "edit",
+  },
+  {
+    label: "Delete",
+    value: "delete",
+  },
+];
+
 const Grants = () => {
   const {
     openDrawer,
@@ -20,7 +39,12 @@ const Grants = () => {
   } = useAdminGrant();
 
   const ActionsRow = () => {
-    return <ActionMenu />;
+    return (
+      <ActionMenu
+        options={ACTION_OPTIONS}
+        clickHandler={(value) => console.log(value)}
+      />
+    );
   };
 
   const tableSetting = {
