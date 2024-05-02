@@ -51,9 +51,9 @@ const useAdminApplication = ({
         navigate("/admin/grants/12/applications/view");
       }
     }
-    if (value === "view_application") {
-      navigate("/admin/grants/12/applications");
-    }
+    // if (value === "view_application") {
+    //   navigate("/admin/grants/12/applications");
+    // }
   };
 
   //   const navigate = useNavigate();
