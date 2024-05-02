@@ -16,6 +16,7 @@ const CustomSwitch = styled(Switch)(() => ({
     "&.Mui-checked": {
       transform: "translateX(16px)", // Move the thumb to the end for "active" state
       color: "#fff", // Assuming you want a white thumb
+ 
     },
   },
   "& .MuiSwitch-thumb": {
@@ -40,12 +41,14 @@ export const SwitchButton = ({
   return (
     <FormGroup>
       <FormControlLabel
+      sx={{margin:0}}
         control={
           <CustomSwitch
             name={name}
             defaultChecked={defaultChecked}
             onChange={onChange}
           />
+          
         }
         label={label || ""}
       />

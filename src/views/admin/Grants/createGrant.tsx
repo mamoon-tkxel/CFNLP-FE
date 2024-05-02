@@ -58,9 +58,10 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   type="text"
                   value={values.title}
                   onChange={handleChange}
-                  className="textField"
+                  className="textField textFieldError"
+                  error={!!(errors.title)}
+                  errorInputField={errors.title||touched.title}
                 />
-                {errors.title && touched.title && errors.title}
 
                 <InputField
                   label="Description"
@@ -85,6 +86,8 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   onChange={handleChange}
                   className="drop-down-grant-type select"
                   options={TYPE_OPTIONS}
+                  errorSelect={errors.type}
+                  
                 />
                 {errors.type && touched.type && errors.type}
 

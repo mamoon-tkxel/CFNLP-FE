@@ -70,18 +70,8 @@ const AdminSignIn = () => {
                     label="Email"
                     placeholder="e.g. john.doe@example.com"
                     type="text"
-                    error={!!(errors.email && touched.email)}
-                    helperText={
-                      errors.email && touched.email ? errors.email : ""
-                    }
-                    sx={{
-                      "& .MuiFormHelperText-root.Mui-error": {
-                        position: "absolute",
-                        top: "100%",
-                        margin: 0,
-                        marginTop: "4px",
-                      },
-                    }}
+                    errorInputField={errors.email || touched.email}
+                    className="textFieldError"
                   />
 
                   {/* {errors.email && touched.email && errors.email} */}
@@ -93,18 +83,7 @@ const AdminSignIn = () => {
                     label="Password"
                     placeholder="********"
                     type="password"
-                    error={!!(errors.password && touched.password)}
-                    helperText={
-                      errors.password && touched.password ? errors.password : ""
-                    }
-                    sx={{
-                      "& .MuiFormHelperText-root.Mui-error": {
-                        position: "absolute",
-                        top: "100%",
-                        margin: 0,
-                        marginTop: "4px",
-                      },
-                    }}
+                    errorInputField={errors.password || touched.password}
                   />
                   <Stack gap="24px">
                     <Stack
@@ -129,7 +108,11 @@ const AdminSignIn = () => {
                       <Typography className="f-14 lh-20 f-w-400 clr-gray-1000">
                         Forgot Password
                       </Typography>
-                      {errorMessage && <div>{errorMessage}</div>}
+                      {errorMessage && (
+                        <Typography color="error" className="error">
+                          {errorMessage}
+                        </Typography>
+                      )}
                     </Stack>
                     <ButtonComponent
                       text="Log In"

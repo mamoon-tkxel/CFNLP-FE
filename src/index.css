@@ -22,3 +22,16 @@
 .select{
   height: 44px;
 }
+.textFieldError .MuiFormHelperText-root.Mui-error {
+  position: absolute;
+  top: 100%;
+  margin: 0;
+  margin-top: 4px;
+}
+.error{
+        font-size:12px;
+        margin:auto;
+        padding:0px;
+        margin-top:2px;
+        display:contents;
+}

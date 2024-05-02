@@ -10,8 +10,6 @@ const options = [
   'Edit',
   'Delete',
 ];
-const ITEM_HEIGHT = 48;
-
 export const ActionMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
