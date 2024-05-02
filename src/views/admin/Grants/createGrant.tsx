@@ -1,9 +1,7 @@
 import { Formik, FormikHelpers, Form } from "formik";
-
 import { InputField } from "@/components/InputFields";
 import { SwitchButton } from "@/components/SwitchButton";
 import { SelectField } from "@/components/SelectField";
-import { TextArea } from "@/components/TextAreaField";
 import { ButtonComponent } from "@/components/Button";
 import { ADMIN_CREATE_GRANT_VALUES } from "@/constants/types/forms";
 import { createGrantValidationSchema } from "@/helpers/validations/AdminForms";
@@ -32,7 +30,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
         {crossIcon}
       </Stack>
       <Divider />
-      <Stack padding="24px">
+      <Stack>
         <Formik
           initialValues={initialValues}
           validationSchema={createGrantValidationSchema}
@@ -40,7 +38,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
         >
           {({ values, errors, touched, handleChange }) => (
             <Form>
-              <Stack gap="24px">
+              <Stack gap="24px" padding="24px">
                 <InputField
                   name="title"
                   label="Grant Title"
@@ -59,6 +57,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                 <InputField
                   label="Description"
                   name="description"
+                  placeholder="Enter a description..."
                   multiline
                   rows={4}
                   value={values.description}
@@ -71,7 +70,11 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   }}
                 />
 
-                <SelectField label="Grant Type" />
+                <SelectField
+                  label="Grant Type"
+                  className="drop-down-grant-type"
+                  options={mockOptions}
+                />
                 {errors.type && touched.type && errors.type}
 
                 <InputField
@@ -80,6 +83,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   onChange={handleChange}
                   label="Grant Amount per charter"
                   type="text"
+                  placeholder="$0.00"
                   sx={{
                     backgroundColor: "#F8F9FA",
                     borderRadius: "8px",
@@ -111,12 +115,20 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                 />
 
                 <SwitchButton label={"Active"} defaultChecked={true} />
-
+              </Stack>
+              <Stack
+                position="absolute"
+                bottom={0}
+                boxShadow="0px -4px 16px 0px #00000014"
+                padding="14px 24px"
+                alignItems={"end"}
+                width="100%"
+              >
                 <ButtonComponent
                   text="save"
                   type="submit"
                   variant="contained"
-                  className="bg-clr-primary-blue-700 b-radius-8"
+                  className="bg-clr-primary-blue-700 b-radius-8 h-44"
                 />
               </Stack>
             </Form>
@@ -128,3 +140,9 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
 };
 
 export default CreateGrant;
+
+const mockOptions = [
+  { value: "option1", label: "Option 1" },
+  { value: "option2", label: "Option 2" },
+  { value: "option3", label: "Option 3" },
+];

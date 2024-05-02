@@ -68,7 +68,7 @@ const AdminSignIn = () => {
                     </Typography>
                   </Stack>
                 </Stack>
-                <Stack gap="16px">
+                <Stack gap="24px">
                   <InputField
                     name="email"
                     value={values.email}
@@ -76,9 +76,19 @@ const AdminSignIn = () => {
                     label="Email"
                     placeholder="e.g. john.doe@example.com"
                     type="text"
+                    error={errors.email && touched.email && errors.email}
+                    helperText={errors.email}
+                    sx={{
+                      "& .MuiFormHelperText-root.Mui-error": {
+                        position: "absolute",
+                        top: "100%",
+                        margin: 0,
+                        marginTop: "4px",
+                      },
+                    }}
                   />
 
-                  {errors.email && touched.email && errors.email}
+                  {/* {errors.email && touched.email && errors.email} */}
 
                   <InputField
                     name="password"
@@ -87,9 +97,20 @@ const AdminSignIn = () => {
                     label="Password"
                     placeholder="********"
                     type="password"
+                    error={
+                      errors.password && touched.password && errors.password
+                    }
+                    helperText={errors.password}
+                    sx={{
+                      "& .MuiFormHelperText-root.Mui-error": {
+                        position: "absolute",
+                        top: "100%",
+                        margin: 0,
+                        marginTop: "4px",
+                      },
+                    }}
                   />
 
-                  {errors.password && touched.password && errors.password}
                   <Stack
                     flexDirection="row"
                     alignItems="center"
@@ -105,15 +126,15 @@ const AdminSignIn = () => {
                       Forgot Password
                     </Typography>
                   </Stack>
+                  <ButtonComponent
+                    text="Log In"
+                    type="submit"
+                    variant="contained"
+                    className="bg-clr-primary-blue-700 b-radius-8"
+                    fullWidth
+                  />
                 </Stack>
               </Stack>
-              <ButtonComponent
-                text="Log In"
-                type="submit"
-                variant="contained"
-                className="bg-clr-primary-blue-700 b-radius-8"
-                fullWidth
-              />
             </Form>
           )}
         </Formik>

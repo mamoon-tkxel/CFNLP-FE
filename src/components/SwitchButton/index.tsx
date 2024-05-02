@@ -7,7 +7,7 @@ type SWITCH_BUTTON = SwitchProps & {
   defaultChecked?: boolean;
   label?: string;
 };
-const CustomSwitch = styled(Switch)(({ theme }) => ({
+const CustomSwitch = styled(Switch)(() => ({
   width: 36, // Fixed width from properties
   height: 20, // Fixed height from properties
   padding: 2, // Padding from properties
@@ -16,6 +16,7 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
     "&.Mui-checked": {
       transform: "translateX(16px)", // Move the thumb to the end for "active" state
       color: "#fff", // Assuming you want a white thumb
+      margin:0
     },
   },
   "& .MuiSwitch-thumb": {

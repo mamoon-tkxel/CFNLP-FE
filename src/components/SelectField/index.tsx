@@ -1,14 +1,31 @@
-interface SELECT_FIELD {
-  label?: string;
-}
+import {
+  MenuItem,
+  Select,
+  SelectProps,
+  Stack,
+  Typography,
+} from "@mui/material";
 
-export const SelectField = ({ label }: SELECT_FIELD) => {
+type SELECT_FIELD = SelectProps & {
+  label?: string;
+  className?: string;
+  options: {
+    value: string;
+    label: string;
+  }[];
+};
+
+export const SelectField = ({ label, className, options,...args }: SELECT_FIELD) => {
   return (
-    <div>
-      {label && <label>{label}</label>}
-      <select>
-        <option>-Select-</option>
-      </select>
-    </div>
+    <Stack gap="8px">
+      {label && <Typography>{label}</Typography>}
+      <Select className={className} sx={{ minHeight: "44px" }} {...args}>
+        {options.map(({ value, label }) => (
+          <MenuItem key={value} value={value}>
+            {label}
+          </MenuItem>
+        ))}
+      </Select>
+    </Stack>
   );
 };
