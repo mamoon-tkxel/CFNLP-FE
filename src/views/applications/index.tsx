@@ -6,9 +6,13 @@ import { ApplicationListing } from "./listing";
 
 type APPLICATION_TYPES = {
   pageTitle?: string;
+  applicationType?: string;
 };
 
-const Applications = ({ pageTitle = "Applications" }: APPLICATION_TYPES) => {
+const Applications = ({
+  pageTitle = "Applications",
+  applicationType = "AdminApplications",
+}: APPLICATION_TYPES) => {
   const { pagination, handlePageChange, TableData } = useAdminGrant();
 
   return (
@@ -33,6 +37,7 @@ const Applications = ({ pageTitle = "Applications" }: APPLICATION_TYPES) => {
         >
           <ApplicationFilters />
           <ApplicationListing
+            applicationType={applicationType}
             data={TableData}
             pagination={pagination}
             loading={false}
