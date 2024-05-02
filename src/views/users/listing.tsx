@@ -11,14 +11,6 @@ import useAdminUsers from "@/hooks/useAdminUser";
 
 const ACTION_OPTIONS = [
   {
-    label: "View Applications",
-    value: "view_application",
-  },
-  {
-    label: "Send Invitation",
-    value: "send_invitation",
-  },
-  {
     label: "Edit",
     value: "edit",
   },
