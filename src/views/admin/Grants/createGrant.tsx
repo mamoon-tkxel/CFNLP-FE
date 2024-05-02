@@ -1,5 +1,4 @@
 import { Formik, FormikHelpers, Form } from "formik";
-
 import { InputField } from "@/components/InputFields";
 import { SwitchButton } from "@/components/SwitchButton";
 import { SelectField } from "@/components/SelectField";
@@ -34,12 +33,17 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
 
   return (
     <Stack>
-      <Stack flexDirection="row" justifyContent="space-between" padding="16px">
+      <Stack
+        flexDirection="row"
+        justifyContent="space-between"
+        padding="16px"
+        // position={"relative"}
+      >
         <Typography className="f-20 lh-23 f-w-500">Add Grant</Typography>
         {crossIcon}
       </Stack>
       <Divider />
-      <Stack padding="24px">
+      <Stack>
         <Formik
           initialValues={initialValues}
           validationSchema={createGrantValidationSchema}
@@ -47,25 +51,21 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
         >
           {({ values, errors, touched, handleChange }) => (
             <Form>
-              <Stack gap="24px">
+              <Stack gap="24px" padding="24px">
                 <InputField
                   name="title"
                   label="Grant Title"
                   type="text"
                   value={values.title}
                   onChange={handleChange}
-                  sx={{
-                    backgroundColor: "#F8F9FA",
-                    borderRadius: "8px",
-                    border: "1px solid #DFE2E8",
-                    boxShadow: "0px 1px 2px 0px #1018280D",
-                  }}
+                  className="textField"
                 />
                 {errors.title && touched.title && errors.title}
 
                 <InputField
                   label="Description"
                   name="description"
+                  placeholder="Enter a description..."
                   multiline
                   rows={4}
                   value={values.description}
@@ -80,10 +80,11 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
 
                 <SelectField
                   label="Grant Type"
-                  options={TYPE_OPTIONS}
                   value={values.type}
                   name="type"
                   onChange={handleChange}
+                  className="drop-down-grant-type select"
+                  options={TYPE_OPTIONS}
                 />
                 {errors.type && touched.type && errors.type}
 
@@ -93,12 +94,8 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   onChange={handleChange}
                   label="Grant Amount per charter"
                   type="number"
-                  sx={{
-                    backgroundColor: "#F8F9FA",
-                    borderRadius: "8px",
-                    border: "1px solid #DFE2E8",
-                    boxShadow: "0px 1px 2px 0px #1018280D",
-                  }}
+                  placeholder="$0.00"
+                  className="textField"
                 />
                 <InputField
                   value={values.deadlineDate}
@@ -106,12 +103,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   name="deadlineDate"
                   label="Application Deadline"
                   type="date"
-                  sx={{
-                    backgroundColor: "#F8F9FA",
-                    borderRadius: "8px",
-                    border: "1px solid #DFE2E8",
-                    boxShadow: "0px 1px 2px 0px #1018280D",
-                  }}
+                  className="textField"
                   inputProps={{
                     min: getCurrentDate(),
                   }}
@@ -136,12 +128,20 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   name="status"
                   onChange={handleChange}
                 />
-
+              </Stack>
+              <Stack
+                position="absolute"
+                bottom={0}
+                boxShadow="0px -4px 16px 0px #00000014"
+                padding="14px 24px"
+                alignItems={"end"}
+                width="100%"
+              >
                 <ButtonComponent
                   text="save"
                   type="submit"
                   variant="contained"
-                  className="bg-clr-primary-blue-700 b-radius-8"
+                  className="bg-clr-primary-blue-700 b-radius-8 h-44"
                 />
               </Stack>
             </Form>

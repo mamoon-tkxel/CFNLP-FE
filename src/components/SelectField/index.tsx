@@ -1,35 +1,36 @@
+import {
+  MenuItem,
+  Select,
+  SelectProps,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { ChangeEventHandler } from "react";
 
-interface Option {
-  label: string;
-  value: string | number;
-}
-interface SELECT_FIELD {
+type SELECT_FIELD = SelectProps & {
   name: string;
   label?: string;
-  options: Option[];
+  className?: string;
   value?: string | number;
+  options: {
+    value?: string;
+    label: string;
+  }[];
   onChange?: ChangeEventHandler<HTMLSelectElement>;
-}
 
-export const SelectField = ({
-  label,
-  name,
-  value,
-  onChange,
-  options,
-}: SELECT_FIELD) => {
+};
+
+export const SelectField = ({name,label, className,value, options,onChange,...args }: SELECT_FIELD) => {
   return (
-    <div>
-      {label && <label>{label}</label>}
-      <select value={value} onChange={onChange} name={name}>
-        <option>-Select-</option>
-        {options.map((option, index) => (
-          <option key={index} value={option.value}>
-            {option.label}
-          </option>
+    <Stack gap="8px">
+      {label && <Typography>{label}</Typography>}
+      <Select className={className} sx={{ minHeight: "44px" }} name={name} value={value} onChange={onChange}{...args}>
+        {options.map(({ value, label }) => (
+          <MenuItem key={value} value={value}>
+            {label}
+          </MenuItem>
         ))}
-      </select>
-    </div>
+      </Select>
+    </Stack>
   );
 };

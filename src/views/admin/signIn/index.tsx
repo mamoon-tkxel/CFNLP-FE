@@ -62,7 +62,7 @@ const AdminSignIn = () => {
                     </Typography>
                   </Stack>
                 </Stack>
-                <Stack gap="16px">
+                <Stack gap="24px">
                   <InputField
                     name="email"
                     value={values.email}
@@ -70,9 +70,21 @@ const AdminSignIn = () => {
                     label="Email"
                     placeholder="e.g. john.doe@example.com"
                     type="text"
+                    error={!!(errors.email && touched.email)}
+                    helperText={
+                      errors.email && touched.email ? errors.email : ""
+                    }
+                    sx={{
+                      "& .MuiFormHelperText-root.Mui-error": {
+                        position: "absolute",
+                        top: "100%",
+                        margin: 0,
+                        marginTop: "4px",
+                      },
+                    }}
                   />
 
-                  {errors.email && touched.email && errors.email}
+                  {/* {errors.email && touched.email && errors.email} */}
 
                   <InputField
                     name="password"
@@ -81,43 +93,55 @@ const AdminSignIn = () => {
                     label="Password"
                     placeholder="********"
                     type="password"
+                    error={!!(errors.password && touched.password)}
+                    helperText={
+                      errors.password && touched.password ? errors.password : ""
+                    }
+                    sx={{
+                      "& .MuiFormHelperText-root.Mui-error": {
+                        position: "absolute",
+                        top: "100%",
+                        margin: 0,
+                        marginTop: "4px",
+                      },
+                    }}
                   />
-
-                  {errors.password && touched.password && errors.password}
-                  {errorMessage && <div>{errorMessage}</div>}
-                  <Stack
-                    flexDirection="row"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    <Stack flexDirection="row" alignItems="center">
-                      <CheckboxField
-                        className=""
-                        title="Remember for 30 days"
-                        name="remember_me_days"
-                        value={values.remember_me_days ? true : false}
-                        onChange={(e) =>
-                          setFieldValue(
-                            "remember_me_days",
-                            e.target.checked ? 30 : 1
-                          )
-                        }
-                      />
+                  <Stack gap="24px">
+                    <Stack
+                      flexDirection="row"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <Stack flexDirection="row" alignItems="center">
+                        <CheckboxField
+                          className=""
+                          title="Remember for 30 days"
+                          name="remember_me_days"
+                          value={values.remember_me_days ? true : false}
+                          onChange={(e) =>
+                            setFieldValue(
+                              "remember_me_days",
+                              e.target.checked ? 30 : 1
+                            )
+                          }
+                        />
+                      </Stack>
+                      <Typography className="f-14 lh-20 f-w-400 clr-gray-1000">
+                        Forgot Password
+                      </Typography>
+                      {errorMessage && <div>{errorMessage}</div>}
                     </Stack>
-                    <Typography className="f-14 lh-20 f-w-400 clr-gray-1000">
-                      Forgot Password
-                    </Typography>
+                    <ButtonComponent
+                      text="Log In"
+                      type="submit"
+                      variant="contained"
+                      className="bg-clr-primary-blue-700 b-radius-8"
+                      disabled={loading}
+                      fullWidth
+                    />
                   </Stack>
                 </Stack>
               </Stack>
-              <ButtonComponent
-                text="Log In"
-                type="submit"
-                variant="contained"
-                className="bg-clr-primary-blue-700 b-radius-8"
-                disabled={loading}
-                fullWidth
-              />
             </Form>
           )}
         </Formik>
