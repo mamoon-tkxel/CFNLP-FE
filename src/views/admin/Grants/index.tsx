@@ -7,6 +7,7 @@ import CreateGrant from "./createGrant";
 import SideDrawer from "@/components/Drawer";
 import useAdminGrant from "@/hooks/useAdminGrant";
 import { ADMIN_GRANT_COLUMNS } from "@/constants/tableColumns";
+import { ActionMenu } from "@/components/ActionMenu";
 
 const Grants = () => {
   const {
@@ -18,11 +19,16 @@ const Grants = () => {
     TableData,
   } = useAdminGrant();
 
+  const ActionsRow = () => {
+    return <ActionMenu />;
+  };
+
   const tableSetting = {
     hideActionColumn: false,
-    showActionRow: false,
+    showActionRow: true,
     showRowCheckboxes: true,
     showColumnCheckbox: true,
+    ActionsRow,
   };
 
   return (
