@@ -42,3 +42,12 @@ export const ADMIN_USERS_COLUMNS = [
   { key: "role", label: "Role" },
   { key: "status", label: "status" },
 ];
+
+export const ADMIN_REPORTS_COLUMNS = [
+  { key: "organizationCounty", label: "Organization and County" },
+  { key: "submittedBy", label: "Submitted By" },
+  { key: "chapter", label: "Chapter/Period" },
+  { key: "dueDate", label: "Due Date" },
+  { key: "submittedOn", label: "Submitted On" },
+  { key: "status", label: "Status" },
+];

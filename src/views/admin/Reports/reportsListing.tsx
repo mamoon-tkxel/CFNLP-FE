@@ -1,31 +1,27 @@
-import { addIcon, exportIcon, filterIcon, sortingIcon } from "@/assets/svgs";
+import { exportIcon, filterIcon, sortingIcon } from "@/assets/svgs";
 import { ButtonComponent } from "@/components/Button";
 import { Stack, Typography } from "@mui/material";
 import DataTable from "@/components/DataTable";
 import { SearchBox } from "@/components/Search/searchBox";
-import SideDrawer from "@/components/Drawer";
-import { ADMIN_COUNTY_PROFILE_COLUMNS } from "@/constants/tableColumns";
+import { ADMIN_REPORTS_COLUMNS } from "@/constants/tableColumns";
 import { ActionMenu } from "@/components/ActionMenu";
-import useAdminCountyProfiles from "@/hooks/useAdminCountyProfiles";
-import CreateCountyProfile from "./createCounty";
-import { Link } from "react-router-dom";
+import useAdminReports from "@/hooks/useAdminReports";
+import { useNavigate } from "react-router-dom";
 
-const CountyProfiles = () => {
-  const {
-    openDrawer,
-    closeDrawer,
-    pagination,
-    handlePageChange,
-    countyInitialValues,
-    TableData,
-  } = useAdminCountyProfiles();
+const ACTION_OPTIONS = [
+  {
+    label: "Send Reminder",
+    value: "reminder",
+  },
+];
+
+const AdminReportsListing = () => {
+  const navigate = useNavigate();
+  const { pagination, handlePageChange, TableData, actionHandler } =
+    useAdminReports();
 
   const ActionsRow = () => {
-    return (
-      <Link to={"212"}>
-        <ActionMenu />
-      </Link>
-    );
+    return <ActionMenu options={ACTION_OPTIONS} clickHandler={actionHandler} />;
   };
 
   const tableSetting = {
@@ -36,7 +32,6 @@ const CountyProfiles = () => {
     ActionsRow,
   };
 
-  const closeDrawerHandler = () => closeDrawer(false);
   return (
     <>
       <Stack gap="24px">
@@ -47,14 +42,9 @@ const CountyProfiles = () => {
           alignItems="center"
         >
           <Typography className="f-20 lh-23 f-w-800">
-            County Profiles
+            <span onClick={() => navigate(-1)}>{"<---"}</span>
+            Reports of: Traffic Safety Education Initiative
           </Typography>
-          <ButtonComponent
-            startIcon={addIcon}
-            className="bg-clr-primary-blue-700 clr-white"
-            text="Add County"
-            onClick={() => closeDrawer(true)}
-          />
         </Stack>
         <Stack
           borderRadius="24px"
@@ -113,7 +103,7 @@ const CountyProfiles = () => {
             </Stack>
           </Stack>
           <DataTable
-            columns={ADMIN_COUNTY_PROFILE_COLUMNS}
+            columns={ADMIN_REPORTS_COLUMNS}
             data={TableData}
             settings={tableSetting}
             pagination={pagination}
@@ -122,15 +112,8 @@ const CountyProfiles = () => {
           />
         </Stack>
       </Stack>
-
-      <SideDrawer open={openDrawer} onClose={closeDrawerHandler}>
-        <CreateCountyProfile
-          initialValues={countyInitialValues}
-          closeDrawer={closeDrawerHandler}
-        />
-      </SideDrawer>
     </>
   );
 };
 
-export default CountyProfiles;
+export default AdminReportsListing;

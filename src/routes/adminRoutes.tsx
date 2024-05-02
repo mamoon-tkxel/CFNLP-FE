@@ -6,6 +6,9 @@ import AdminApplications from "@/views/admin/Applications";
 import GrantApplications from "@/views/admin/Grants/grantApplications";
 import CountyProfiles from "@/views/admin/countyProfiles";
 import AdminUsers from "@/views/admin/users";
+import AdminReports from "@/views/admin/Reports";
+import AdminReportsListing from "@/views/admin/Reports/reportsListing";
+import AdminCountyDetail from "@/views/admin/countyDetail";
 
 export const AdminRoutes = () => {
   return (
@@ -19,7 +22,11 @@ export const AdminRoutes = () => {
         />
 
         <Route path="/county-profiles" element={<CountyProfiles />} />
+        <Route path="/county-profiles/:id" element={<AdminCountyDetail />} />
+
         <Route path="/users" element={<AdminUsers />} />
+        <Route path="/reports" element={<AdminReports />} />
+        <Route path="/reports/:id" element={<AdminReportsListing />} />
 
         <Route path="/applications" element={<AdminApplications />} />
 

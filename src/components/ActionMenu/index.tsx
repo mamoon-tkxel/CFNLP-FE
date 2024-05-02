@@ -9,8 +9,8 @@ interface OPTIONS {
   value: string | number;
 }
 interface ACTION_MENU {
-  options: OPTIONS[];
-  clickHandler: (value: string | number) => void;
+  options?: OPTIONS[];
+  clickHandler?: (value: string | number) => void;
 }
 
 export const ActionMenu = ({

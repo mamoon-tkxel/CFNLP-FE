@@ -40,7 +40,7 @@ const SIDEBAR = [
   {
     icon: reportIcon,
     label: "Reports",
-    link: "/",
+    link: "reports",
     activeLink: ["/admin/reports"],
   },
   {
