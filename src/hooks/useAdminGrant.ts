@@ -11,18 +11,21 @@ import { useState } from "react";
 const TableData = [
   {
     title: "Banteay Sre",
-    status: "active",
-    contact: "John Smith",
-    appliedDate: "2024-04-04",
+    status: "Active",
+    type: "Office at",
+    deadLine: "2024-04-04",
+    amount: "$100",
+    applications: "200",
   },
   {
     title: "Banteay Sre",
-    status: "active",
-    contact: "John Smith",
-    appliedDate: "2024-04-04",
+    status: "Active",
+    type: "Office at",
+    deadLine: "2024-04-04",
+    amount: "$100",
+    applications: "200",
   },
 ];
-
 const useAdminGrant = () => {
   const [loading] = useState(false);
   const [openDrawer, closeDrawer] = useState(false);
@@ -31,7 +34,7 @@ const useAdminGrant = () => {
   const [pagination, setPagination] = useState<PaginationType>({
     rowsPerPage: 10,
     page: 1,
-    totalRecords: 16,
+    totalRecords: 2,
   });
 
   const [grantInitialValues] = useState({
