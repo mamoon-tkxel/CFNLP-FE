@@ -1,6 +1,7 @@
 export interface SIGN_IN_VALUES {
   email: string;
   password: string;
+  remember_me_days: null | number;
 }
 
 export interface ADMIN_CREATE_GRANT_VALUES {
@@ -8,7 +9,7 @@ export interface ADMIN_CREATE_GRANT_VALUES {
   description?: string;
   type: string;
   amount?: null | number;
-  deadlineDate: Date;
+  deadlineDate: string;
   sendInvitation: boolean;
   status: boolean;
 }

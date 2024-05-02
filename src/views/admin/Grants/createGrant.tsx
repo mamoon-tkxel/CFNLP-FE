@@ -4,13 +4,21 @@ import { SwitchButton } from "@/components/SwitchButton";
 import { SelectField } from "@/components/SelectField";
 import { ButtonComponent } from "@/components/Button";
 import { ADMIN_CREATE_GRANT_VALUES } from "@/constants/types/forms";
-import { createGrantValidationSchema } from "@/helpers/validations/AdminForms";
+import { createGrantValidationSchema } from "@/utils/validations/AdminForms";
 import { Divider, Stack, Typography } from "@mui/material";
 import { crossIcon } from "@/assets/svgs";
+import { getCurrentDate } from "@/utils/helpers";
 
 interface CREATE_GRANT_TYPES {
   initialValues: ADMIN_CREATE_GRANT_VALUES;
 }
+
+const TYPE_OPTIONS = [
+  {
+    label: "TYPE",
+    value: "type",
+  },
+];
 
 const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
   const handleSubmit = (
@@ -72,8 +80,11 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
 
                 <SelectField
                   label="Grant Type"
+                  value={values.type}
+                  name="type"
+                  onChange={handleChange}
                   className="drop-down-grant-type"
-                  options={mockOptions}
+                  options={TYPE_OPTIONS}
                 />
                 {errors.type && touched.type && errors.type}
 
@@ -82,8 +93,7 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   value={values.amount}
                   onChange={handleChange}
                   label="Grant Amount per charter"
-                  type="text"
-                  placeholder="$0.00"
+                  type="number"
                   sx={{
                     backgroundColor: "#F8F9FA",
                     borderRadius: "8px",
@@ -103,18 +113,30 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                     border: "1px solid #DFE2E8",
                     boxShadow: "0px 1px 2px 0px #1018280D",
                   }}
+                  inputProps={{
+                    min: getCurrentDate(),
+                  }}
                 />
                 <>
                   {errors.deadlineDate &&
                     touched.deadlineDate &&
                     errors?.deadlineDate}
                 </>
+
                 <SwitchButton
+                  name="sendInvitation"
+                  onChange={handleChange}
+                  defaultChecked={!!values.sendInvitation}
                   label={"Send Grant Invitation to Counties"}
                   sx={{ width: "36px", height: "20px", borderRadius: "12px" }}
                 />
 
-                <SwitchButton label={"Active"} defaultChecked={true} />
+                <SwitchButton
+                  label={values.status ? "Active" : "InActive"}
+                  defaultChecked={!!values.status}
+                  name="status"
+                  onChange={handleChange}
+                />
               </Stack>
               <Stack
                 position="absolute"
@@ -140,9 +162,3 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
 };
 
 export default CreateGrant;
-
-const mockOptions = [
-  { value: "option1", label: "Option 1" },
-  { value: "option2", label: "Option 2" },
-  { value: "option3", label: "Option 3" },
-];

@@ -32,11 +32,22 @@ const CustomSwitch = styled(Switch)(() => ({
     opacity: 1, // No transparency
   },
 }));
-export const SwitchButton = ({ defaultChecked, label }: SWITCH_BUTTON) => {
+export const SwitchButton = ({
+  name,
+  onChange,
+  defaultChecked,
+  label,
+}: SWITCH_BUTTON) => {
   return (
     <FormGroup>
       <FormControlLabel
-        control={<CustomSwitch defaultChecked={defaultChecked} />}
+        control={
+          <CustomSwitch
+            name={name}
+            defaultChecked={defaultChecked}
+            onChange={onChange}
+          />
+        }
         label={label || ""}
       />
     </FormGroup>

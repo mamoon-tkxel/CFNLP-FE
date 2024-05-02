@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Paginations } from "@/components/Pagination";
+import { TablePagination } from "@/components/Pagination";
 import "./DataTable.scss";
 
 import {
@@ -15,7 +15,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { DynamicObject } from "@/constants/types";
+import { DynamicObject, TablePaginationType } from "@/constants/types";
 import { sortingIcon } from "@/assets/svgs";
 
 export interface TableColumn {
@@ -25,14 +25,6 @@ export interface TableColumn {
   permission?: string;
   sortType?: "number" | "string";
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-export type TablePagination = Partial<{
-  page: number;
-  pageSize: number;
-  totalRecords: number;
-}>;
 
 export interface TableData {
   [key: string]: DynamicObject;
@@ -55,7 +47,7 @@ interface DataTableTypes {
     page,
     pageSize,
     totalRecords,
-  }: TablePagination) => void;
+  }: TablePaginationType) => void;
   handleSearchFields?: (val: DynamicObject) => void;
 }
 
@@ -136,7 +128,7 @@ const DataTable: React.FC<DataTableTypes> = ({
   };
 
   function pageChangeHandler(newPage: number) {
-    handlePageChange && handlePageChange({ page: newPage + 1 || 1 });
+    handlePageChange && handlePageChange({ page: newPage });
   }
 
   function handleRowsPerPageChange(newRowsPerPage: number) {
@@ -310,7 +302,7 @@ const DataTable: React.FC<DataTableTypes> = ({
         </TableBody>
       </Table>
       {!hidePagination && pagination && (
-        <Paginations
+        <TablePagination
           pagination={{
             ...pagination,
             onPageChange: pageChangeHandler,

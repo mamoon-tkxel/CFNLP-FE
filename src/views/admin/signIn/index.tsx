@@ -1,4 +1,4 @@
-import { Formik, FormikHelpers, Form } from "formik";
+import { Formik, Form } from "formik";
 
 import { ButtonComponent } from "@/components/Button";
 import { CheckboxField } from "@/components/Checkbox";
@@ -6,23 +6,17 @@ import { InputField } from "@/components/InputFields";
 import { Logo } from "@/components/logo";
 import { Stack, Typography } from "@mui/material";
 import { SIGN_IN_VALUES } from "@/constants/types/forms";
-import { signInValidationSchema } from "@/helpers/validations/AdminForms";
+import { signInValidationSchema } from "@/utils/validations/AdminForms";
+import useAdminAuth from "@/hooks/useAdminAuth";
 
 const AdminSignIn = () => {
   const initialValues: SIGN_IN_VALUES = {
     email: "",
     password: "",
+    remember_me_days: null,
   };
 
-  const handleSubmit = (
-    values: SIGN_IN_VALUES,
-    { setSubmitting }: FormikHelpers<SIGN_IN_VALUES>
-  ) => {
-    setTimeout(() => {
-      console.log(values);
-      setSubmitting(false);
-    }, 500);
-  };
+  const { handleSubmitLogin, loading, errorMessage } = useAdminAuth();
 
   return (
     <Stack
@@ -46,9 +40,9 @@ const AdminSignIn = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={signInValidationSchema}
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitLogin}
         >
-          {({ values, errors, touched, handleChange }) => (
+          {({ values, errors, touched, handleChange, setFieldValue }) => (
             <Form>
               <Stack>
                 <Stack alignItems="center" gap="32px">
@@ -76,8 +70,10 @@ const AdminSignIn = () => {
                     label="Email"
                     placeholder="e.g. john.doe@example.com"
                     type="text"
-                    error={errors.email && touched.email && errors.email}
-                    helperText={errors.email}
+                    error={!!(errors.email && touched.email)}
+                    helperText={
+                      errors.email && touched.email ? errors.email : ""
+                    }
                     sx={{
                       "& .MuiFormHelperText-root.Mui-error": {
                         position: "absolute",
@@ -97,10 +93,10 @@ const AdminSignIn = () => {
                     label="Password"
                     placeholder="********"
                     type="password"
-                    error={
-                      errors.password && touched.password && errors.password
+                    error={!!(errors.password && touched.password)}
+                    helperText={
+                      errors.password && touched.password ? errors.password : ""
                     }
-                    helperText={errors.password}
                     sx={{
                       "& .MuiFormHelperText-root.Mui-error": {
                         position: "absolute",
@@ -120,21 +116,31 @@ const AdminSignIn = () => {
                       <CheckboxField
                         className=""
                         title="Remember for 30 days"
+                        name="remember_me_days"
+                        value={values.remember_me_days ? true : false}
+                        onChange={(e) =>
+                          setFieldValue(
+                            "remember_me_days",
+                            e.target.checked ? 30 : 1
+                          )
+                        }
                       />
                     </Stack>
                     <Typography className="f-14 lh-20 f-w-400 clr-gray-1000">
                       Forgot Password
                     </Typography>
+                    {errorMessage && <div>{errorMessage}</div>}
                   </Stack>
-                  <ButtonComponent
-                    text="Log In"
-                    type="submit"
-                    variant="contained"
-                    className="bg-clr-primary-blue-700 b-radius-8"
-                    fullWidth
-                  />
                 </Stack>
               </Stack>
+              <ButtonComponent
+                text="Log In"
+                type="submit"
+                variant="contained"
+                className="bg-clr-primary-blue-700 b-radius-8"
+                disabled={loading}
+                fullWidth
+              />
             </Form>
           )}
         </Formik>

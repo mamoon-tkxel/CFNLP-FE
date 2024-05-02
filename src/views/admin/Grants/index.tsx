@@ -2,52 +2,21 @@ import { addIcon, exportIcon, filterIcon, sortingIcon } from "@/assets/svgs";
 import { ButtonComponent } from "@/components/Button";
 import { Stack, Typography } from "@mui/material";
 import DataTable from "@/components/DataTable";
-import { PaginationType } from "@/constants/types";
-import { useState } from "react";
 import { SearchBox } from "@/components/Search/searchBox";
 import CreateGrant from "./createGrant";
 import SideDrawer from "@/components/Drawer";
-
-const data = [
-  {
-    title: "Banteay Sre",
-    status: "active",
-    contact: "John Smith",
-    appliedDate: "2024-04-04",
-  },
-  {
-    title: "Banteay Sre",
-    status: "active",
-    contact: "John Smith",
-    appliedDate: "2024-04-04",
-  },
-];
+import useAdminGrant from "@/hooks/useAdminGrant";
+import { ADMIN_GRANT_COLUMNS } from "@/constants/tableColumns";
 
 const Grants = () => {
-  const [pagination] = useState<PaginationType>({
-    rowsPerPage: 10,
-    page: 1,
-    totalRecords: 16,
-  });
-
-  const [openDrawer, closeDrawer] = useState(false);
-
-  const [grantInitialValues] = useState({
-    title: "",
-    description: "",
-    type: "",
-    amount: null,
-    deadlineDate: new Date(),
-    sendInvitation: false,
-    status: true,
-  });
-
-  const columns = [
-    { key: "title", label: "Organization & County" },
-    { key: "contact", label: "Contact Person" },
-    { key: "appliedDate", label: "Applied on" },
-    { key: "status", label: "Status" },
-  ];
+  const {
+    openDrawer,
+    closeDrawer,
+    pagination,
+    handlePageChange,
+    grantInitialValues,
+    TableData,
+  } = useAdminGrant();
 
   const tableSetting = {
     hideActionColumn: false,
@@ -130,11 +99,12 @@ const Grants = () => {
             </Stack>
           </Stack>
           <DataTable
-            columns={columns}
-            data={data}
+            columns={ADMIN_GRANT_COLUMNS}
+            data={TableData}
             settings={tableSetting}
             pagination={pagination}
             loading={false}
+            handlePageChange={handlePageChange}
           />
         </Stack>
       </Stack>
