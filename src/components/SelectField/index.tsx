@@ -12,6 +12,7 @@ type SELECT_FIELD = SelectProps & {
   label?: string;
   className?: string;
   value?: string | number;
+  errorSelect?: string;
   options: {
     value?: string;
     label: string;
@@ -20,7 +21,7 @@ type SELECT_FIELD = SelectProps & {
 
 };
 
-export const SelectField = ({name,label, className,value, options,onChange,...args }: SELECT_FIELD) => {
+export const SelectField = ({name,label, className,value,errorSelect,options,onChange,...args }: SELECT_FIELD) => {
   return (
     <Stack gap="8px">
       {label && <Typography>{label}</Typography>}
@@ -31,6 +32,12 @@ export const SelectField = ({name,label, className,value, options,onChange,...ar
           </MenuItem>
         ))}
       </Select>
+      <Typography
+          color="error"
+          className="error"
+        >
+          {errorSelect}
+        </Typography>
     </Stack>
   );
 };

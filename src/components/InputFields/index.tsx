@@ -1,7 +1,7 @@
 import { TextField, TextFieldProps, Stack, Typography } from "@mui/material";
 type InputField = TextFieldProps & {
   label?: string;
-  errorInputField?: string;
+  errorInputField?: string|boolean;
 };
 export const InputField = ({ label,errorInputField, ...arg }: InputField) => {
   return (
@@ -10,11 +10,7 @@ export const InputField = ({ label,errorInputField, ...arg }: InputField) => {
       <TextField {...arg} />
       <Typography
         color="error"
-        fontSize={10}
-        margin="auto"
-        p={0}
-        mt={0.5}
-        display="contents"
+        className="error"
       >
         {errorInputField}
       </Typography>
