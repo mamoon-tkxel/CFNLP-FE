@@ -70,7 +70,9 @@ const AdminSignIn = () => {
                     label="Email"
                     placeholder="e.g. john.doe@example.com"
                     type="text"
-                    errorInputField={errors.email || touched.email}
+                    errorInputField={
+                      errors.email && touched.email && errors.email
+                    }
                     className="textFieldError"
                   />
 
@@ -83,7 +85,9 @@ const AdminSignIn = () => {
                     label="Password"
                     placeholder="********"
                     type="password"
-                    errorInputField={errors.password || touched.password}
+                    errorInputField={
+                      errors.password && touched.password && errors.password
+                    }
                   />
                   <Stack gap="24px">
                     <Stack

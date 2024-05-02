@@ -1,6 +1,7 @@
 import DataTable from "@/components/DataTable";
 import { DynamicObject } from "@/constants/types";
 import { ADMIN_APPLICATION_COLUMNS } from "@/constants/tableColumns";
+import { TableActionsRow } from "./actions";
 
 export const ApplicationListing = ({
   data,
@@ -10,7 +11,7 @@ export const ApplicationListing = ({
   applicationType,
 }: DynamicObject) => {
   const ActionsRow = () => {
-    return <div>...</div>;
+    return <TableActionsRow applicationType={applicationType} />;
   };
 
   const tableSetting = {
