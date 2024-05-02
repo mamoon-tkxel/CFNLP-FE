@@ -28,3 +28,17 @@ export const ADMIN_APPLICATION_COLUMNS: AdminApplicationColumns = {
     { key: "status", label: "Status" },
   ],
 };
+
+export const ADMIN_COUNTY_PROFILE_COLUMNS = [
+  { key: "name", label: "County Name" },
+  { key: "person", label: "County Person" },
+  { key: "structure", label: "Program Structure" },
+  { key: "funding", label: "Funding Sources" },
+  { key: "last_update", label: "Last Update" },
+];
+
+export const ADMIN_USERS_COLUMNS = [
+  { key: "name", label: "Full Name" },
+  { key: "role", label: "Role" },
+  { key: "status", label: "status" },
+];

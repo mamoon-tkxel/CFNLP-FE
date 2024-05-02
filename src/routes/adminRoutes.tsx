@@ -4,6 +4,8 @@ import AdminLayout from "@/layouts/adminLayout";
 import Grants from "@/views/admin/Grants";
 import AdminApplications from "@/views/admin/Applications";
 import GrantApplications from "@/views/admin/Grants/grantApplications";
+import CountyProfiles from "@/views/admin/countyProfiles";
+import AdminUsers from "@/views/admin/users";
 
 export const AdminRoutes = () => {
   return (
@@ -15,6 +17,9 @@ export const AdminRoutes = () => {
           path="/grants/:id/applications"
           element={<GrantApplications />}
         />
+
+        <Route path="/county-profiles" element={<CountyProfiles />} />
+        <Route path="/users" element={<AdminUsers />} />
 
         <Route path="/applications" element={<AdminApplications />} />
 

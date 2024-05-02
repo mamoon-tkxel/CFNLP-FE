@@ -46,14 +46,14 @@ const SIDEBAR = [
   {
     icon: countyIcon,
     label: "County Profiles",
-    link: "/",
-    activeLink: ["/admin/county"],
+    link: "county-profiles",
+    activeLink: ["/admin/county-profiles"],
   },
   {
     icon: usersIcon,
     label: "Users",
-    link: "/",
-    activeLink: ["/admin/user"],
+    link: "users",
+    activeLink: ["/admin/users"],
   },
 ];
 
