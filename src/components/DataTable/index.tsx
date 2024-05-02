@@ -211,7 +211,7 @@ const DataTable: React.FC<DataTableTypes> = ({
                 }}
               >
                 <span className="table-header-cell-wrapper">
-                  <span className="f-14 lh-21 f-w-500 clr-gray-100">
+                  <span className="f-14 lh-21 f-w-400 clr-gray-100">
                     {column.label}
                   </span>
                 </span>
@@ -264,7 +264,9 @@ const DataTable: React.FC<DataTableTypes> = ({
                           : ""
                       }
                     >
-                      <span>
+                      <span
+                       className="f-14 lh-21 f-w-500 clr-black-100">
+
                         {modifiedRow.includes(column.key) ||
                         Array.isArray(row[column.key]) ? (
                           <CustomRenderRow

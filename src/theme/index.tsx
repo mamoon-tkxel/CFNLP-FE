@@ -12,9 +12,7 @@ let theme = createTheme({
     },
   },
   palette: {
-    // subheading: {
-    //   primary: appBlackLight
-    // },
+  
     background: {
       default: "#ffffff",
     },
@@ -23,24 +21,21 @@ let theme = createTheme({
       // secondary: secondaryText,
 
     },
-    // primary: {
-    //   main: appPrimaryColor,
-    // },
-    // info: {
-    //   main: appPrimaryColor,
-    //   light: appBlackcolor
-    // },
-    // secondary: {
-    //   main: appSecondaryColor,
-    //   light: appGreyColor
-    // },
-    // error: {
-    //   main: red.A400,
-    // },
+
   },
   typography: {
     fontFamily: ["Archivo", "Archivo Black", "sans-serif"].join(","),
   },
+  components:{
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.75rem',
+          borderRadius: '27px'
+        }
+      }
+    },
+  }
 
 });
 theme = responsiveFontSizes(theme);

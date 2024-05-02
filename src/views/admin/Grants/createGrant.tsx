@@ -43,7 +43,12 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
         {crossIcon}
       </Stack>
       <Divider />
-      <Stack>
+      <Stack
+        sx={{
+          maxHeight: "calc(100vh - 120px)",
+          overflowY: "auto",
+        }}
+      >
         <Formik
           initialValues={initialValues}
           validationSchema={createGrantValidationSchema}
@@ -59,8 +64,8 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   value={values.title}
                   onChange={handleChange}
                   className="textField textFieldError"
-                  error={!!(errors.title)}
-                  errorInputField={errors.title||touched.title}
+                  error={!!errors.title}
+                  errorInputField={errors.title || touched.title}
                 />
 
                 <InputField
@@ -87,7 +92,6 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   className="drop-down-grant-type select"
                   options={TYPE_OPTIONS}
                   errorSelect={errors.type}
-                  
                 />
                 {errors.type && touched.type && errors.type}
 
