@@ -112,12 +112,12 @@ const AdminSignIn = () => {
                       <Typography className="f-14 lh-20 f-w-400 clr-gray-1000">
                         Forgot Password
                       </Typography>
-                      {errorMessage && (
-                        <Typography color="error" className="error">
-                          {errorMessage}
-                        </Typography>
-                      )}
                     </Stack>
+                    {errorMessage && (
+                      <Typography color="error" textAlign="right">
+                        {errorMessage}
+                      </Typography>
+                    )}
                     <ButtonComponent
                       text="Log In"
                       type="submit"

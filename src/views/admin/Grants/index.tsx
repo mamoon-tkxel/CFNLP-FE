@@ -1,4 +1,4 @@
-import { addIcon, exportIcon, filterIcon, sortingIcon } from "@/assets/svgs";
+import { addIcon, exportIcon, sortingIcon } from "@/assets/svgs";
 import { ButtonComponent } from "@/components/Button";
 import { Stack, Typography } from "@mui/material";
 import DataTable from "@/components/DataTable";
@@ -8,6 +8,7 @@ import SideDrawer from "@/components/Drawer";
 import useAdminGrant from "@/hooks/useAdminGrant";
 import { ADMIN_GRANT_COLUMNS } from "@/constants/tableColumns";
 import { ActionMenu } from "@/components/ActionMenu";
+import FilterMenus from "@/components/FilterComponent";
 
 const ACTION_OPTIONS = [
   {
@@ -89,12 +90,7 @@ const Grants = () => {
               gap="10px"
             >
               <SearchBox />
-              <ButtonComponent
-                startIcon={filterIcon}
-                text="Filter"
-                variant="outlined"
-                className="h-40 clr-gray-500 border-clr-gray-300"
-              />
+              <FilterMenus/>
             </Stack>
 
             <Stack
