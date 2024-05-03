@@ -34,7 +34,7 @@ const CustomFilter = styled((props: MenuProps) => (
       "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
     "& .MuiMenu-list": {
       "& .MuiMenu-list": {
-        width: "221pxpx",
+        width: "221px",
         top: "599px",
         left: "1560px",
         padding: "12px 0px 0px 0px",
@@ -81,7 +81,7 @@ export default function FilterMenus() {
         startIcon={filterIcon}
         text="Filter"
         variant="outlined"
-        className="h-40 clr-gray-500 border-clr-gray-300"
+        className="h-44 clr-gray-500 border-clr-gray-300 height"
         aria-controls={open ? "demo-customized-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
@@ -104,16 +104,8 @@ export default function FilterMenus() {
           <SelectField
             label="Type"
             name="type"
-            className="select"
+            className="select filterType"
             options={TYPE_OPTIONS}
-            sx={{
-              width: "197px",
-              height: "40px",
-              borderRadius: "8px",
-              border: "1px solid #DFE2E8",
-              boxShadow: "0px 1px 2px 0px #1018280D",
-              padding: "7px 14px !important",
-            }}
           />{" "}
         </MenuItem>
         <MenuItem>
@@ -123,19 +115,9 @@ export default function FilterMenus() {
             name="deadlineDate"
             label="Date"
             type="date"
-            className="textField"
+            className="textField filterDate"
             inputProps={{
               min: getCurrentDate(),
-            }}
-            sx={{
-              width: "197px",
-              height: "44px !important",
-              borderRadius: "8px",
-              border: "1px solid #DFE2E8",
-              boxShadow: "0px 1px 2px 0px #1018280D",
-              backgroundColor:"#FFFFFF",
-              padding: 0,
-              margin: 0,
             }}
           />
         </MenuItem>

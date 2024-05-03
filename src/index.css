@@ -29,9 +29,33 @@
   margin-top: 4px;
 }
 .error{
-        /* font-size:12px; */
-        /* margin:auto; */
         padding:0px;
-        /* margin-top:2px; */
         display:contents;
+}
+.filterDate{
+  width: 197px;
+  height: 44px !important;
+  border-radius: 8px;
+  border: 1px solid #DFE2E8;
+  box-shadow: 0px 1px 2px 0px #1018280D;
+  background-color:#FFFFFF;
+  padding: 0;
+  margin: 0;
+}
+.filterType{
+  width: 197px;
+  height: 40px;
+  border-radius:8px;
+  border: 1px solid #DFE2E8;
+  box-shadow: 0px 1px 2px 0px #1018280D;
+  padding: 7px 14px !important
+}
+.inputField{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5;
+}
+.height{
+  height: 44px;
 }

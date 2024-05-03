@@ -90,12 +90,6 @@ const Grants = () => {
               gap="10px"
             >
               <SearchBox />
-              {/* <ButtonComponent
-                startIcon={filterIcon}
-                text="Filter"
-                variant="outlined"
-                className="h-40 clr-gray-500 border-clr-gray-300"
-              /> */}
               <FilterMenus/>
             </Stack>
 
