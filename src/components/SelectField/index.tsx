@@ -12,7 +12,7 @@ type SELECT_FIELD = SelectProps & {
   label?: string;
   className?: string;
   value?: string | number;
-  errorSelect?: string;
+  errorSelect?: string|boolean;
   options: {
     value?: string;
     label: string;
@@ -25,7 +25,19 @@ export const SelectField = ({name,label, className,value,errorSelect,options,onC
   return (
     <Stack gap="8px">
       {label && <Typography>{label}</Typography>}
-      <Select className={className} sx={{ minHeight: "44px" }} name={name} value={value} onChange={onChange}{...args}>
+      <Select 
+        className={className} 
+        sx={{ 
+          minHeight: "44px",
+          "& select": {
+            border: "none" // Remove border from select element
+          }
+        }} 
+        name={name} 
+        value={value} 
+        onChange={onChange}
+        {...args}
+      >
         {options.map(({ value, label }) => (
           <MenuItem key={value} value={value}>
             {label}

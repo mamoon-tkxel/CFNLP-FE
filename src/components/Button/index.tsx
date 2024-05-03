@@ -3,7 +3,7 @@ type ButtonComponentProps = ButtonProps & {
   type?: string;
   text?: string;
   className?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 export const ButtonComponent = ({
   type,
