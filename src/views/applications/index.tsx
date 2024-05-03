@@ -4,6 +4,7 @@ import { ApplicationTabs } from "./tabs";
 import { ApplicationListing } from "./listing";
 import useAdminApplication from "@/hooks/useAdminApplication";
 import { useNavigate } from "react-router-dom";
+import { APPLICATION_TYPE } from "./types";
 
 type APPLICATION_TYPES = {
   pageTitle?: string;
@@ -12,10 +13,11 @@ type APPLICATION_TYPES = {
 
 const Applications = ({
   pageTitle = "Applications",
-  applicationType = "AdminApplications",
+  applicationType = APPLICATION_TYPE.ADMIN_APPLICATION,
 }: APPLICATION_TYPES) => {
-  const naviagte = useNavigate();
-  const { pagination, handlePageChange, TableData } = useAdminApplication();
+  const navigate = useNavigate();
+  const { pagination, handlePageChange, TableData, actionMenusClickHandler } =
+    useAdminApplication({ applicationType });
 
   return (
     <>
@@ -27,9 +29,10 @@ const Applications = ({
           alignItems="center"
         >
           <Typography className="f-20 lh-23 f-w-800">
-            <span onClick={() => naviagte(-1)}>
-              {" "}
-              {applicationType === "AdminGrantApplication" ? "<--" : ""}
+            <span onClick={() => navigate(-1)}>
+              {applicationType === APPLICATION_TYPE.ADMIN_GRANT_APPLICATION
+                ? "<--"
+                : ""}
             </span>
             {pageTitle}
           </Typography>
@@ -50,6 +53,7 @@ const Applications = ({
             pagination={pagination}
             loading={false}
             handlePageChange={handlePageChange}
+            actionMenusClickHandler={actionMenusClickHandler}
           />
         </Stack>
       </Stack>

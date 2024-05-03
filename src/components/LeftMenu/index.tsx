@@ -40,20 +40,20 @@ const SIDEBAR = [
   {
     icon: reportIcon,
     label: "Reports",
-    link: "/",
+    link: "reports",
     activeLink: ["/admin/reports"],
   },
   {
     icon: countyIcon,
     label: "County Profiles",
-    link: "/",
-    activeLink: ["/admin/county"],
+    link: "county-profiles",
+    activeLink: ["/admin/county-profiles"],
   },
   {
     icon: usersIcon,
     label: "Users",
-    link: "/",
-    activeLink: ["/admin/user"],
+    link: "users",
+    activeLink: ["/admin/users"],
   },
 ];
 
