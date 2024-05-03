@@ -93,7 +93,6 @@ const CreateGrant = ({ initialValues }: CREATE_GRANT_TYPES) => {
                   options={TYPE_OPTIONS}
                   errorSelect={errors.type}
                 />
-                {errors.type && touched.type && errors.type}
 
                 <InputField
                   name="amount"

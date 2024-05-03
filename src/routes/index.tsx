@@ -10,7 +10,7 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         <Route path="/admin/*" element={<AdminRoutes />} />
       ) : (
         <Route path="/sign-in" element={<AdminSignIn />} />
